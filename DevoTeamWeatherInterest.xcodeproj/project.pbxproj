@@ -18,6 +18,7 @@
 		7258760028F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */; };
 		7258760228F751C60099AFB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760128F751C60099AFB1 /* Constants.swift */; };
 		7258760428F753170099AFB1 /* ExampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7258760328F753170099AFB1 /* ExampleData.json */; };
+		7258760628F755DC0099AFB1 /* AnyCityFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760528F755DC0099AFB1 /* AnyCityFetched.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Programming Assignment - iOS - Devoteam 2022.pdf"; sourceTree = "<group>"; };
 		7258760128F751C60099AFB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7258760328F753170099AFB1 /* ExampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleData.json; sourceTree = "<group>"; };
+		7258760528F755DC0099AFB1 /* AnyCityFetched.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCityFetched.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		725875C628F748770099AFB1 = {
 			isa = PBXGroup;
 			children = (
+				7258760528F755DC0099AFB1 /* AnyCityFetched.swift */,
 				725875D128F748770099AFB1 /* DevoTeamWeatherInterest */,
 				725875E228F748780099AFB1 /* DevoTeamWeatherInterestTests */,
 				725875EC28F748780099AFB1 /* DevoTeamWeatherInterestUITests */,
@@ -108,8 +111,8 @@
 				725875D828F748780099AFB1 /* Preview Content */,
 				725875FD28F74FBE0099AFB1 /* README.rtf */,
 				725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */,
-				7258760128F751C60099AFB1 /* Constants.swift */,
 				7258760328F753170099AFB1 /* ExampleData.json */,
+				7258760128F751C60099AFB1 /* Constants.swift */,
 			);
 			path = DevoTeamWeatherInterest;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				725875D528F748770099AFB1 /* ContentView.swift in Sources */,
 				725875D328F748770099AFB1 /* DevoTeamWeatherInterestApp.swift in Sources */,
 				7258760228F751C60099AFB1 /* Constants.swift in Sources */,
+				7258760628F755DC0099AFB1 /* AnyCityFetched.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
