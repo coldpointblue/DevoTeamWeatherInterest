@@ -17,6 +17,7 @@
 		725875FE28F74FBE0099AFB1 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FD28F74FBE0099AFB1 /* README.rtf */; };
 		7258760028F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */; };
 		7258760228F751C60099AFB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760128F751C60099AFB1 /* Constants.swift */; };
+		7258760428F753170099AFB1 /* ExampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7258760328F753170099AFB1 /* ExampleData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		725875FD28F74FBE0099AFB1 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 		725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Programming Assignment - iOS - Devoteam 2022.pdf"; sourceTree = "<group>"; };
 		7258760128F751C60099AFB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7258760328F753170099AFB1 /* ExampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				725875FD28F74FBE0099AFB1 /* README.rtf */,
 				725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */,
 				7258760128F751C60099AFB1 /* Constants.swift */,
+				7258760328F753170099AFB1 /* ExampleData.json */,
 			);
 			path = DevoTeamWeatherInterest;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				725875DA28F748780099AFB1 /* Preview Assets.xcassets in Resources */,
 				725875FE28F74FBE0099AFB1 /* README.rtf in Resources */,
 				725875D728F748780099AFB1 /* Assets.xcassets in Resources */,
+				7258760428F753170099AFB1 /* ExampleData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
