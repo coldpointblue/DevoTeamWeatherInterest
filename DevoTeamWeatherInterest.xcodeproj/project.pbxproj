@@ -135,6 +135,7 @@
 			buildConfigurationList = 725875F328F748780099AFB1 /* Build configuration list for PBXNativeTarget "DevoTeamWeatherInterest" */;
 			buildPhases = (
 				725875CB28F748770099AFB1 /* Sources */,
+				725875FC28F749830099AFB1 /* Run Script SwiftLint */,
 				725875CC28F748770099AFB1 /* Frameworks */,
 				725875CD28F748770099AFB1 /* Resources */,
 			);
@@ -251,6 +252,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		725875FC28F749830099AFB1 /* Run Script SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n    swiftlint lint --fix --format && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\\n note:       …or if you have brew, install using…\\n note:      brew install swiftlint\"\n  exit 1\nfi\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		725875CB28F748770099AFB1 /* Sources */ = {

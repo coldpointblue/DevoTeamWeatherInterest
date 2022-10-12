@@ -11,17 +11,18 @@
 //
 //  https://github.com/coldpointblue
 //  Created by Hugo Diaz on 12/10/22.
-//  
+//
 //  ----------------------------------------------------
-
+// Insert steps here to perform after app launch but before taking a screenshot,
+// such as logging into a test account or navigating somewhere in the app
 //  ----------------------------------------------------
-/*  Goal explanation:  (whole app does? … for users)   */
-//  ----------------------------------------------------
-
 
 import XCTest
 
-final class DevoTeamWeatherInterestUITestsLaunchTests: XCTestCase {
+final class
+DevoTeamWeatherInterestUITestsLaunchTests:
+    // swiftlint:disable:previous type_name
+    XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
