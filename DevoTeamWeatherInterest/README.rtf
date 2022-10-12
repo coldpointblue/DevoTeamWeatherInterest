@@ -1,0 +1,5283 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red56\green56\blue57;\red239\green239\blue239;
+\red227\green87\blue59;\red108\green121\blue135;\red24\green24\blue28;\red255\green255\blue255;\red79\green165\blue255;
+\red225\green87\blue63;\red155\green35\blue147;\red0\green0\blue0;\red196\green26\blue22;\red28\green0\blue207;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c28235\c28235\c29020;\cssrgb\c94902\c94902\c94902;
+\cssrgb\c92157\c43137\c29412;\csgenericrgb\c42353\c47451\c52941;\csgenericrgb\c9412\c9412\c10980;\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c30980\c64706\c100000;
+\cssrgb\c91373\c43137\c31373;\csgenericrgb\c60759\c13753\c57628;\csgenericrgb\c0\c0\c0\c85000;\csgenericrgb\c77000\c10200\c8600;\csgenericrgb\c11000\c0\c81000;
+}
+\margl1440\margr1440\vieww34060\viewh20160\viewkind0
+\deftab560
+\pard\pardeftab560\partightenfactor0
+
+\f0\b\fs48 \cf2 DevoTeam
+\fs36  Weather Interest assignment \'97 Hugo Diaz \'97 Wed Oct 12th 2022\
+\pard\pardeftab560\partightenfactor0
+
+\f1\b0 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b \cf0 DOCUMENTATION
+\f1\b0 \cf2 \'85\
+\pard\pardeftab560\partightenfactor0
+\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+\cf0 This README file describes 
+\f0\b REQUIREMENTS
+\f1\b0 , 
+\f0\b SOLUTION
+\f1\b0  and 
+\f0\b STRATEGY
+\f1\b0 ... It first describes the 
+\f0\b GOAL
+\f1\b0  of the project.\
+\
+PROJECT PURPOSE \'97 To display a list of 
+\f0\b city names
+\f1\b0  and be able to select any city in the list to 
+\f0\b view current weather report details
+\f1\b0 .\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b \cf0 OPINION
+\f1\b0 :\
+Above the list there should be 
+\f0\b instructions
+\f1\b0  on one line. "Tap on any city name" and a number of "
+\f0\b Total
+\f1\b0 " cities will be displayed on the top right.\
+The list should show a subtitle with the 
+\f0\b country name
+\f1\b0  at the top.\
+The list should show 
+\f0\b city names
+\f1\b0  and perhaps a 
+\f0\b weather icon
+\f1\b0  within each row.\
+A tap on any city name should display the 
+\f0\b weather report details
+\f1\b0  in a popup.\
+A city name text 
+\f0\b search filter
+\f1\b0  at the top should allow typing letters and limit choices in the 
+\f0\b list
+\f1\b0 .\
+A 
+\f0\b heart icon
+\f1\b0  representing a 
+\f0\b favorite
+\f1\b0  should allow the list to limit choices by only showing favorites directly when it's on.\
+The same favorite icon should be seen 
+\f0\b in the weather report detail view
+\f1\b0 , to allow a city to 
+\f0\b belong, or not, to the favorite group
+\f1\b0 .\
+\
+A 
+\f0\b MODEL of JSON data
+\f1\b0  will structure the information.\
+\
+
+\f0\b JSON requests
+\f1\b0  made according to the desired information.\
+
+\f0\b JSON response of data
+\f1\b0  retrieved and put into a model object.\
+
+\f0\b Fresh data
+\f1\b0  will be 
+\f0\b displayed
+\f1\b0  in the 
+\f0\b user interface
+\f1\b0 .\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+
+\f0\b OBJECTIVES for 
+\fs48 \cf2 DevoTeam
+\f1\b0\fs36 \cf0 :\
+To display a 
+\f0\b list of cities
+\f1\b0 . See 
+\f0\b their weather
+\f1\b0 . 
+\f0\b Use JSON data requests and responses
+\f1\b0 .\
+Be able to use
+\f0\b  a SEARCH text field
+\f1\b0  to enter and 
+\f0\b filter the listed cities
+\f1\b0 .\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\
+
+\f0\b Relevant information to consider regarding the app USER...\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 ...Questions: 
+\f0\b Who are the users?
+\f1\b0  What is 
+\f0\b their motivation?
+\f1\b0  
+\f0\b What do they need to see or do?
+\f1\b0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b \cf0 My interpretation
+\f1\b0  \'97 A person who wants to 
+\f0\b see current weather reports for their favorite cities in their country
+\f1\b0 .\
+The user interface should be 
+\f0\b simple and easy to understand
+\f1\b0 .\
+\
+
+\f0\b If I had MORE TIME I would.
+\f1\b0 ..\
+\
+Offer a quick 
+\f0\b ONBOARDING 3 screens
+\f1\b0  the first time the app starts 
+\f0\b describing what it's for.
+\f1\b0 \
+Allows you to 
+\f0\b select another country or several at once
+\f1\b0 , with a 
+\f0\b checklist
+\f1\b0  showing whether the country and its cities should be included.\
+Add 
+\f0\b PREFERENCES for LANGUAGE
+\f1\b0  used in the app and other 
+\f0\b personal choices
+\f1\b0 .\
+
+\f0\b EXCHANGE information with FRIENDS 
+\f1\b0 or others by 
+\f0\b copying the weather report and quickly pasting into an email
+\f1\b0  r message, if wanted.\
+include a way to 
+\f0\b choose a local photo to represent the day
+\f1\b0  in their place, city or country TO 
+\f0\b EXCHANGE with friends via a link
+\f1\b0 .\
+An 
+\f0\b indicator of how long ago the port was last fetched
+\f1\b0  for a 
+\f0\b given city
+\f1\b0 .\
+
+\f0\b Keep track
+\f1\b0  of multiple weather reports for 
+\f0\b different dates they asked about
+\f1\b0 , so they can 
+\f0\b see when it's a good time to travel
+\f1\b0  somewhere, perhaps swiping left or right in detail view to see 
+\f0\b past weather reports and a chart
+\f1\b0  of how 
+\f0\b things are changing during the year
+\f1\b0 .\
+
+\f0\b FEEDBACK
+\f1\b0 ... 
+\f0\b Encouraging NEW INNOVATIVE USES
+\f1\b0  they come up with on their own. Know 
+\f0\b when, where, why and how
+\f1\b0 .\
+\'85
+\f0\b On a large scale, a user can also benefit from???
+\f1\b0 \
+\
+
+\f0\b Inform users
+\f1\b0  to ... 
+\f0\b ALLOW & HELP *US* evaluate app data anonymously, collected from all users
+\f1\b0 , 
+\f0\b improving future VERSION
+\f1\b0  
+\f0\b insights at scale
+\f1\b0 . they can 
+\f0\b choose to skip sharing
+\f1\b0  their 
+\f0\b usage data
+\f1\b0  
+\f0\b or allow
+\f1\b0  whether to use their data, collected as 
+\f0\b anonymous
+\f1\b0  or identifiable, etc. Give them a choice to avoid it.  With 
+\f0\b examples of kinds of data
+\f1\b0  \'97> What cities asked, 
+\f0\b what time
+\f1\b0  of day.  On 
+\f0\b how many days in a month
+\f1\b0 . 
+\f0\b How many times used
+\f1\b0 .\
+
+\f0\b Localize the text displayed
+\f1\b0  in the 
+\f0\b user interface
+\f1\b0  to other languages.\
+\
+\
+\'85This is an 
+\f0\b EXAMPLE of what MIGHT be the PURPOSE of the APP
+\f1\b0 , depending on the 
+\f0\b REASON
+\f1\b0  why in THEIR HANDS it is 
+\f0\b VALUABLE to our users and our clients
+\f1\b0 .\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\pard\pardeftab560\partightenfactor0
+
+\f1\b0 \cf0 -------- 
+\f0\b REQUIREMENT
+\f1\b0  -----------\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b\fs48 \cf2 DevoTeam
+\f1\b0\fs36 \cf0 ... 
+\f0\b Use iOS
+\f1\b0 . Use 
+\f0\b data calls
+\f1\b0  and 
+\f0\b provided data
+\f1\b0 . 
+\f0\b Create the user interface
+\f1\b0 .\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\b0 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+\cf0 -------- 
+\f0\b STRATEGY
+\f1\b0  -----------\
+\'95 Make 
+\f0\b notes first about the problem
+\f1\b0 , to 
+\f0\b remind yourself of details
+\f1\b0  and 
+\f0\b communicate relevant parts to others
+\f1\b0 .\
+\'95 Use a 
+\f0\b scalable
+\f1\b0  project architecture that separates tasks, views, and core models.\
+\
+WHAT to do... 
+\f0\b THINK!
+\f1\b0 \
+\'95 
+\f0\b Read the problem
+\f1\b0 .\
+\'95 
+\f0\b Analyze
+\f1\b0  the problem, think about 
+\f0\b who it's for and what THEY can do
+\f1\b0  with it that 
+\f0\b can make it USEFUL
+\f1\b0 .\
+Load 
+\f0\b data from the web
+\f1\b0 ...\
+\'95 
+\f0\b What does the app actually need to communicate
+\f1\b0 , activate, or display on the screen 
+\f0\b to be useful
+\f1\b0 ?\
+...
+\f0\b DESIGN a user interface that is attractive and easy for the user to enjoy viewing this information.
+\f1\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b \cf0 DEFINE
+\f1\b0  & FILTER DOWN TO 
+\f0\b ESSENTIAL topics
+\f1\b0  to start with 
+\f0\b short-term, proof-of-concept goals
+\f1\b0 \'85\
+[see 
+\f0\b HOW TO USE
+\f1\b0  further BELOW as a 
+\f0\b guide
+\f1\b0 ]\
+\'95 
+\f0\b Imagine
+\f1\b0  what you need to do a proof-of-concept for this exercise... 
+\f0\b Reasons
+\f1\b0  for 
+\f0\b what data, what processes, UI
+\f1\b0 , etc.\
+\'97\'97\
+\
+
+\f0\b HOW to code
+\f1\b0  it\'85\
+\'95 
+\f0\b View JSON data and determine its format
+\f1\b0 . Use a tool like QuickType... ( {\field{\*\fldinst{HYPERLINK "https://app.quicktype.io/#l=swift"}}{\fldrslt https://app.quicktype.io/#l=swift}} )\
+\'95 
+\f0\b Code a MODEL for individual city data
+\f1\b0  that is collected when a web 
+\f0\b json file is fetched
+\f1\b0 . Make sure the 
+\f0\b model data is valid
+\f1\b0  and 
+\f0\b working
+\f1\b0 .\
+\'95 Code a 
+\f0\b mechanism to GET the JSON data file from the address
+\f1\b0 .\
+\'95 Figure out a 
+\f0\b user interface to present the data
+\f1\b0  with the pieces that a player sees in a 
+\f0\b useful way that must make sense to them
+\f1\b0 .\
+\
+\'95 Code the 
+\f0\b necessary parts to use the data, business logic.\
+\pard\pardeftab560\partightenfactor0
+\cf2 \'97\'97\
+\'97\'97\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\b0 \
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 Data API Documentation  info\'85 Useful links
+\f1\b0 \cf2 \'85\
+\pard\pardeftab720\sa200\partightenfactor0
+\cf2 Cal for 5 day / 3 hour forecast data\'85 {\field{\*\fldinst{HYPERLINK "https://openweathermap.org/forecast5"}}{\fldrslt https://openweathermap.org/forecast5}}\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b \cf0 API call FORMAT\'85
+\f1\b0 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs30 \cf3 \cb4 \expnd0\expndtw0\kerning0
+api.openweathermap.org/data/2.5/forecast?lat=\cf5 \{lat\}\cf3 &lon=\cf5 \{lon\}\cf3 &appid=\cf5 \{API key\}\cf3 \cb1 \
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f1\fs36 \cf2 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab560\partightenfactor0
+\cf2 Website\'85 {\field{\*\fldinst{HYPERLINK "https://home.openweathermap.org/"}}{\fldrslt https://home.openweathermap.org}}\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 API details
+\f1\b0 \cf2 \'85 {\field{\*\fldinst{HYPERLINK "https://openweathermap.org/current"}}{\fldrslt https://openweathermap.org/current}}\
+
+\f0\b \cf0 API documentation
+\f1\b0 \cf2  {\field{\*\fldinst{HYPERLINK "https://openweathermap.org/api"}}{\fldrslt https://openweathermap.org/api}}\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\pard\pardeftab560\partightenfactor0
+
+\f1\b0 \cf2 \
+Please, 
+\f0\b \cf0 always use your API key in each API call
+\f1\b0 \cf2 \
+Obtain keys\'85\
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://home.openweathermap.org/api_keys"}}{\fldrslt \cf2 https://home.openweathermap.org/api_keys}}\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 Endpoint
+\f1\b0 \cf2 :\
+- Please, 
+\f0\b \cf0 use the endpoint
+\f1\b0 \cf2  {\field{\*\fldinst{HYPERLINK "http://api.openweathermap.org"}}{\fldrslt 
+\f0\b \cf0 api.openweathermap.org}} for your API calls\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\b0 \
+\pard\tx989\pardeftab989\pardirnatural\partightenfactor0
+
+\f2\fs40 \cf6 \cb7 // CORRECT call eXAMPLE\cf8 \
+\cf6 // {\field{\*\fldinst{HYPERLINK "https://api.openweathermap.org/data/2.5/forecast?lat=59.3537294&lon=18.071998&appid=342624122126d3a53485bbdac2436ae3"}}{\fldrslt \cf9 https://api.openweathermap.org/data/2.5/forecast?lat=59.3537294&lon=18.071998&appid=342624122126d3a53485bbdac2436ae3}}\cf8 \
+\pard\pardeftab560\partightenfactor0
+
+\f1\fs36 \cf2 \cb1 \
+\{\
+   "cod":"200",\
+   "message":0,\
+   "cnt":40,\
+   "list":[\
+      \{\
+         "dt":1665511200,\
+         "main":\{\
+            "temp":282.43,\
+            "feels_like":280.88,\
+            "temp_min":281.01,\
+            "temp_max":282.43,\
+            "pressure":1013,\
+            "sea_level":1013,\
+            "grnd_level":1011,\
+            "humidity":70,\
+            "temp_kf":1.42\
+         \},\
+         "weather":[\
+            \{\
+               "id":800,\
+               "main":"Clear",\
+               "description":"clear sky",\
+               "icon":"01n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":0\
+         \},\
+         "wind":\{\
+            "speed":2.86,\
+            "deg":257,\
+            "gust":6.81\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-11 18:00:00"\
+      \},\
+      \{\
+         "dt":1665522000,\
+         "main":\{\
+            "temp":281.52,\
+            "feels_like":280,\
+            "temp_min":279.7,\
+            "temp_max":281.52,\
+            "pressure":1014,\
+            "sea_level":1014,\
+            "grnd_level":1013,\
+            "humidity":72,\
+            "temp_kf":1.82\
+         \},\
+         "weather":[\
+            \{\
+               "id":800,\
+               "main":"Clear",\
+               "description":"clear sky",\
+               "icon":"01n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":3\
+         \},\
+         "wind":\{\
+            "speed":2.56,\
+            "deg":284,\
+            "gust":5.27\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-11 21:00:00"\
+      \},\
+      \{\
+         "dt":1665532800,\
+         "main":\{\
+            "temp":280.27,\
+            "feels_like":279.35,\
+            "temp_min":279.19,\
+            "temp_max":280.27,\
+            "pressure":1016,\
+            "sea_level":1016,\
+            "grnd_level":1015,\
+            "humidity":72,\
+            "temp_kf":1.08\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":25\
+         \},\
+         "wind":\{\
+            "speed":1.64,\
+            "deg":357,\
+            "gust":2.55\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 00:00:00"\
+      \},\
+      \{\
+         "dt":1665543600,\
+         "main":\{\
+            "temp":277.99,\
+            "feels_like":277.99,\
+            "temp_min":277.99,\
+            "temp_max":277.99,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":1016,\
+            "humidity":67,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":48\
+         \},\
+         "wind":\{\
+            "speed":0.84,\
+            "deg":351,\
+            "gust":1.06\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 03:00:00"\
+      \},\
+      \{\
+         "dt":1665554400,\
+         "main":\{\
+            "temp":277.86,\
+            "feels_like":277.86,\
+            "temp_min":277.86,\
+            "temp_max":277.86,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":1017,\
+            "humidity":63,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":26\
+         \},\
+         "wind":\{\
+            "speed":0.71,\
+            "deg":43,\
+            "gust":0.83\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 06:00:00"\
+      \},\
+      \{\
+         "dt":1665565200,\
+         "main":\{\
+            "temp":282.61,\
+            "feels_like":282.01,\
+            "temp_min":282.61,\
+            "temp_max":282.61,\
+            "pressure":1020,\
+            "sea_level":1020,\
+            "grnd_level":1018,\
+            "humidity":47,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":800,\
+               "main":"Clear",\
+               "description":"clear sky",\
+               "icon":"01d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":10\
+         \},\
+         "wind":\{\
+            "speed":1.67,\
+            "deg":155,\
+            "gust":2.97\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 09:00:00"\
+      \},\
+      \{\
+         "dt":1665576000,\
+         "main":\{\
+            "temp":284.66,\
+            "feels_like":283.2,\
+            "temp_min":284.66,\
+            "temp_max":284.66,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":1017,\
+            "humidity":51,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":801,\
+               "main":"Clouds",\
+               "description":"few clouds",\
+               "icon":"02d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":11\
+         \},\
+         "wind":\{\
+            "speed":3.02,\
+            "deg":202,\
+            "gust":4.2\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 12:00:00"\
+      \},\
+      \{\
+         "dt":1665586800,\
+         "main":\{\
+            "temp":282.86,\
+            "feels_like":281.6,\
+            "temp_min":282.86,\
+            "temp_max":282.86,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":1016,\
+            "humidity":64,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":801,\
+               "main":"Clouds",\
+               "description":"few clouds",\
+               "icon":"02d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":20\
+         \},\
+         "wind":\{\
+            "speed":2.55,\
+            "deg":205,\
+            "gust":4.43\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 15:00:00"\
+      \},\
+      \{\
+         "dt":1665597600,\
+         "main":\{\
+            "temp":281.16,\
+            "feels_like":279.35,\
+            "temp_min":281.16,\
+            "temp_max":281.16,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":1016,\
+            "humidity":78,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":32\
+         \},\
+         "wind":\{\
+            "speed":2.88,\
+            "deg":193,\
+            "gust":7.42\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 18:00:00"\
+      \},\
+      \{\
+         "dt":1665608400,\
+         "main":\{\
+            "temp":283,\
+            "feels_like":281.15,\
+            "temp_min":283,\
+            "temp_max":283,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":1016,\
+            "humidity":86,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":3.61,\
+            "deg":235,\
+            "gust":9.69\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 21:00:00"\
+      \},\
+      \{\
+         "dt":1665619200,\
+         "main":\{\
+            "temp":280.97,\
+            "feels_like":278.99,\
+            "temp_min":280.97,\
+            "temp_max":280.97,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":1016,\
+            "humidity":92,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":88\
+         \},\
+         "wind":\{\
+            "speed":3.08,\
+            "deg":217,\
+            "gust":8.74\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 00:00:00"\
+      \},\
+      \{\
+         "dt":1665630000,\
+         "main":\{\
+            "temp":280.8,\
+            "feels_like":278.6,\
+            "temp_min":280.8,\
+            "temp_max":280.8,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":1015,\
+            "humidity":88,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":69\
+         \},\
+         "wind":\{\
+            "speed":3.39,\
+            "deg":209,\
+            "gust":9.92\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 03:00:00"\
+      \},\
+      \{\
+         "dt":1665640800,\
+         "main":\{\
+            "temp":281.45,\
+            "feels_like":279.33,\
+            "temp_min":281.45,\
+            "temp_max":281.45,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":1014,\
+            "humidity":77,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":82\
+         \},\
+         "wind":\{\
+            "speed":3.49,\
+            "deg":200,\
+            "gust":10.4\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 06:00:00"\
+      \},\
+      \{\
+         "dt":1665651600,\
+         "main":\{\
+            "temp":284.68,\
+            "feels_like":283.69,\
+            "temp_min":284.68,\
+            "temp_max":284.68,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":1014,\
+            "humidity":69,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.27,\
+            "deg":211,\
+            "gust":9.98\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 09:00:00"\
+      \},\
+      \{\
+         "dt":1665662400,\
+         "main":\{\
+            "temp":286.05,\
+            "feels_like":285.07,\
+            "temp_min":286.05,\
+            "temp_max":286.05,\
+            "pressure":1016,\
+            "sea_level":1016,\
+            "grnd_level":1013,\
+            "humidity":64,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.77,\
+            "deg":207,\
+            "gust":8.15\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 12:00:00"\
+      \},\
+      \{\
+         "dt":1665673200,\
+         "main":\{\
+            "temp":284.45,\
+            "feels_like":283.78,\
+            "temp_min":284.45,\
+            "temp_max":284.45,\
+            "pressure":1014,\
+            "sea_level":1014,\
+            "grnd_level":1012,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.01,\
+            "deg":197,\
+            "gust":9.11\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 15:00:00"\
+      \},\
+      \{\
+         "dt":1665684000,\
+         "main":\{\
+            "temp":284.06,\
+            "feels_like":283.45,\
+            "temp_min":284.06,\
+            "temp_max":284.06,\
+            "pressure":1014,\
+            "sea_level":1014,\
+            "grnd_level":1011,\
+            "humidity":86,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":3.84,\
+            "deg":192,\
+            "gust":9.72\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 18:00:00"\
+      \},\
+      \{\
+         "dt":1665694800,\
+         "main":\{\
+            "temp":283.3,\
+            "feels_like":282.67,\
+            "temp_min":283.3,\
+            "temp_max":283.3,\
+            "pressure":1013,\
+            "sea_level":1013,\
+            "grnd_level":1011,\
+            "humidity":88,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":3.01,\
+            "deg":196,\
+            "gust":8.17\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 21:00:00"\
+      \},\
+      \{\
+         "dt":1665705600,\
+         "main":\{\
+            "temp":282.31,\
+            "feels_like":281.19,\
+            "temp_min":282.31,\
+            "temp_max":282.31,\
+            "pressure":1012,\
+            "sea_level":1012,\
+            "grnd_level":1010,\
+            "humidity":87,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":2.22,\
+            "deg":207,\
+            "gust":5.73\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 00:00:00"\
+      \},\
+      \{\
+         "dt":1665716400,\
+         "main":\{\
+            "temp":282.7,\
+            "feels_like":281.36,\
+            "temp_min":282.7,\
+            "temp_max":282.7,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1009,\
+            "humidity":83,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":2.62,\
+            "deg":219,\
+            "gust":7.16\
+         \},\
+         "visibility":10000,\
+         "pop":0.05,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 03:00:00"\
+      \},\
+      \{\
+         "dt":1665727200,\
+         "main":\{\
+            "temp":282.2,\
+            "feels_like":281.04,\
+            "temp_min":282.2,\
+            "temp_max":282.2,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1008,\
+            "humidity":90,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":97\
+         \},\
+         "wind":\{\
+            "speed":2.24,\
+            "deg":207,\
+            "gust":6.21\
+         \},\
+         "visibility":10000,\
+         "pop":0.01,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 06:00:00"\
+      \},\
+      \{\
+         "dt":1665738000,\
+         "main":\{\
+            "temp":284.83,\
+            "feels_like":284.12,\
+            "temp_min":284.83,\
+            "temp_max":284.83,\
+            "pressure":1010,\
+            "sea_level":1010,\
+            "grnd_level":1008,\
+            "humidity":79,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":93\
+         \},\
+         "wind":\{\
+            "speed":2.99,\
+            "deg":207,\
+            "gust":5.3\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 09:00:00"\
+      \},\
+      \{\
+         "dt":1665748800,\
+         "main":\{\
+            "temp":284.64,\
+            "feels_like":284.04,\
+            "temp_min":284.64,\
+            "temp_max":284.64,\
+            "pressure":1009,\
+            "sea_level":1009,\
+            "grnd_level":1007,\
+            "humidity":84,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":96\
+         \},\
+         "wind":\{\
+            "speed":3.08,\
+            "deg":195,\
+            "gust":7.09\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 12:00:00"\
+      \},\
+      \{\
+         "dt":1665759600,\
+         "main":\{\
+            "temp":284.86,\
+            "feels_like":284.12,\
+            "temp_min":284.86,\
+            "temp_max":284.86,\
+            "pressure":1009,\
+            "sea_level":1009,\
+            "grnd_level":1006,\
+            "humidity":78,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":84\
+         \},\
+         "wind":\{\
+            "speed":2.94,\
+            "deg":230,\
+            "gust":5.85\
+         \},\
+         "visibility":10000,\
+         "pop":0.01,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 15:00:00"\
+      \},\
+      \{\
+         "dt":1665770400,\
+         "main":\{\
+            "temp":282.69,\
+            "feels_like":281.37,\
+            "temp_min":282.69,\
+            "temp_max":282.69,\
+            "pressure":1008,\
+            "sea_level":1008,\
+            "grnd_level":1006,\
+            "humidity":85,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":92\
+         \},\
+         "wind":\{\
+            "speed":2.59,\
+            "deg":187,\
+            "gust":6.89\
+         \},\
+         "visibility":10000,\
+         "pop":0.01,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 18:00:00"\
+      \},\
+      \{\
+         "dt":1665781200,\
+         "main":\{\
+            "temp":281.9,\
+            "feels_like":280.54,\
+            "temp_min":281.9,\
+            "temp_max":281.9,\
+            "pressure":1007,\
+            "sea_level":1007,\
+            "grnd_level":1005,\
+            "humidity":89,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":71\
+         \},\
+         "wind":\{\
+            "speed":2.43,\
+            "deg":205,\
+            "gust":7.06\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 21:00:00"\
+      \},\
+      \{\
+         "dt":1665792000,\
+         "main":\{\
+            "temp":281.71,\
+            "feels_like":279.82,\
+            "temp_min":281.71,\
+            "temp_max":281.71,\
+            "pressure":1006,\
+            "sea_level":1006,\
+            "grnd_level":1004,\
+            "humidity":88,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":76\
+         \},\
+         "wind":\{\
+            "speed":3.18,\
+            "deg":199,\
+            "gust":9.69\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 00:00:00"\
+      \},\
+      \{\
+         "dt":1665802800,\
+         "main":\{\
+            "temp":282.75,\
+            "feels_like":280.53,\
+            "temp_min":282.75,\
+            "temp_max":282.75,\
+            "pressure":1005,\
+            "sea_level":1005,\
+            "grnd_level":1003,\
+            "humidity":86,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.29,\
+            "deg":217,\
+            "gust":10.03\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 03:00:00"\
+      \},\
+      \{\
+         "dt":1665813600,\
+         "main":\{\
+            "temp":283.53,\
+            "feels_like":282.61,\
+            "temp_min":283.53,\
+            "temp_max":283.53,\
+            "pressure":1005,\
+            "sea_level":1005,\
+            "grnd_level":1003,\
+            "humidity":76,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":3.74,\
+            "deg":225,\
+            "gust":8.64\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 06:00:00"\
+      \},\
+      \{\
+         "dt":1665824400,\
+         "main":\{\
+            "temp":284.15,\
+            "feels_like":282.98,\
+            "temp_min":284.15,\
+            "temp_max":284.15,\
+            "pressure":1005,\
+            "sea_level":1005,\
+            "grnd_level":1003,\
+            "humidity":64,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":97\
+         \},\
+         "wind":\{\
+            "speed":3.71,\
+            "deg":240,\
+            "gust":7.15\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 09:00:00"\
+      \},\
+      \{\
+         "dt":1665835200,\
+         "main":\{\
+            "temp":285.62,\
+            "feels_like":284.46,\
+            "temp_min":285.62,\
+            "temp_max":285.62,\
+            "pressure":1005,\
+            "sea_level":1005,\
+            "grnd_level":1003,\
+            "humidity":59,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":85\
+         \},\
+         "wind":\{\
+            "speed":2.97,\
+            "deg":223,\
+            "gust":5.12\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 12:00:00"\
+      \},\
+      \{\
+         "dt":1665846000,\
+         "main":\{\
+            "temp":284.28,\
+            "feels_like":283.35,\
+            "temp_min":284.28,\
+            "temp_max":284.28,\
+            "pressure":1004,\
+            "sea_level":1004,\
+            "grnd_level":1002,\
+            "humidity":73,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":2.07,\
+            "deg":183,\
+            "gust":3.18\
+         \},\
+         "visibility":10000,\
+         "pop":0.05,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 15:00:00"\
+      \},\
+      \{\
+         "dt":1665856800,\
+         "main":\{\
+            "temp":282.08,\
+            "feels_like":281.11,\
+            "temp_min":282.08,\
+            "temp_max":282.08,\
+            "pressure":1004,\
+            "sea_level":1004,\
+            "grnd_level":1002,\
+            "humidity":91,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":95\
+         \},\
+         "wind":\{\
+            "speed":1.98,\
+            "deg":194,\
+            "gust":3.71\
+         \},\
+         "visibility":10000,\
+         "pop":0.03,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 18:00:00"\
+      \},\
+      \{\
+         "dt":1665867600,\
+         "main":\{\
+            "temp":281.86,\
+            "feels_like":280.74,\
+            "temp_min":281.86,\
+            "temp_max":281.86,\
+            "pressure":1003,\
+            "sea_level":1003,\
+            "grnd_level":1001,\
+            "humidity":92,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":97\
+         \},\
+         "wind":\{\
+            "speed":2.12,\
+            "deg":207,\
+            "gust":3.82\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 21:00:00"\
+      \},\
+      \{\
+         "dt":1665878400,\
+         "main":\{\
+            "temp":283.04,\
+            "feels_like":281.84,\
+            "temp_min":283.04,\
+            "temp_max":283.04,\
+            "pressure":1003,\
+            "sea_level":1003,\
+            "grnd_level":1000,\
+            "humidity":85,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":96\
+         \},\
+         "wind":\{\
+            "speed":2.51,\
+            "deg":188,\
+            "gust":9.08\
+         \},\
+         "visibility":10000,\
+         "pop":0.27,\
+         "rain":\{\
+            "3h":0.15\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 00:00:00"\
+      \},\
+      \{\
+         "dt":1665889200,\
+         "main":\{\
+            "temp":283.44,\
+            "feels_like":282.8,\
+            "temp_min":283.44,\
+            "temp_max":283.44,\
+            "pressure":1000,\
+            "sea_level":1000,\
+            "grnd_level":998,\
+            "humidity":87,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.24,\
+            "deg":193,\
+            "gust":10.54\
+         \},\
+         "visibility":10000,\
+         "pop":0.09,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 03:00:00"\
+      \},\
+      \{\
+         "dt":1665900000,\
+         "main":\{\
+            "temp":283.83,\
+            "feels_like":283.41,\
+            "temp_min":283.83,\
+            "temp_max":283.83,\
+            "pressure":998,\
+            "sea_level":998,\
+            "grnd_level":996,\
+            "humidity":94,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":501,\
+               "main":"Rain",\
+               "description":"moderate rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.45,\
+            "deg":182,\
+            "gust":11.36\
+         \},\
+         "visibility":10000,\
+         "pop":0.83,\
+         "rain":\{\
+            "3h":3.41\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 06:00:00"\
+      \},\
+      \{\
+         "dt":1665910800,\
+         "main":\{\
+            "temp":284.37,\
+            "feels_like":284.08,\
+            "temp_min":284.37,\
+            "temp_max":284.37,\
+            "pressure":994,\
+            "sea_level":994,\
+            "grnd_level":992,\
+            "humidity":97,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":501,\
+               "main":"Rain",\
+               "description":"moderate rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":4.08,\
+            "deg":165,\
+            "gust":10.69\
+         \},\
+         "visibility":1781,\
+         "pop":0.98,\
+         "rain":\{\
+            "3h":9.69\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 09:00:00"\
+      \},\
+      \{\
+         "dt":1665921600,\
+         "main":\{\
+            "temp":285.78,\
+            "feels_like":285.32,\
+            "temp_min":285.78,\
+            "temp_max":285.78,\
+            "pressure":989,\
+            "sea_level":989,\
+            "grnd_level":987,\
+            "humidity":85,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":501,\
+               "main":"Rain",\
+               "description":"moderate rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":6.37,\
+            "deg":212,\
+            "gust":12.62\
+         \},\
+         "visibility":8002,\
+         "pop":1,\
+         "rain":\{\
+            "3h":8.51\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 12:00:00"\
+      \},\
+      \{\
+         "dt":1665932400,\
+         "main":\{\
+            "temp":283.22,\
+            "feels_like":282.27,\
+            "temp_min":283.22,\
+            "temp_max":283.22,\
+            "pressure":988,\
+            "sea_level":988,\
+            "grnd_level":986,\
+            "humidity":76,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":85\
+         \},\
+         "wind":\{\
+            "speed":7.68,\
+            "deg":218,\
+            "gust":13.75\
+         \},\
+         "visibility":10000,\
+         "pop":0.9,\
+         "rain":\{\
+            "3h":1.28\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 15:00:00"\
+      \}\
+   ],\
+   "city":\{\
+      "id":2685828,\
+      "name":"\'d6stermalm",\
+      "coord":\{\
+         "lat":59.3537,\
+         "lon":18.072\
+      \},\
+      "country":"SE",\
+      "population":36418,\
+      "timezone":7200,\
+      "sunrise":1665465321,\
+      "sunset":1665503600\
+   \}\
+\}\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\b0 \
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 \
+Example API call #1
+\f1\b0 \cf2 \'85\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "http://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=342624122126d3a53485bbdac2436ae3"}}{\fldrslt 
+\f2\fs30 \cf3 \cb4 \expnd0\expndtw0\kerning0
+api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=\cf10 342624122126d3a53485bbdac2436ae3}}
+\f2\fs30 \cf3 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab560\partightenfactor0
+
+\f1\fs36 \cf2 \kerning1\expnd0\expndtw0 \
+\{\
+   "cod":"200",\
+   "message":0,\
+   "cnt":40,\
+   "list":[\
+      \{\
+         "dt":1665511200,\
+         "main":\{\
+            "temp":287.85,\
+            "feels_like":287.44,\
+            "temp_min":285.14,\
+            "temp_max":287.85,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":935,\
+            "humidity":79,\
+            "temp_kf":2.71\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":83\
+         \},\
+         "wind":\{\
+            "speed":0.55,\
+            "deg":194,\
+            "gust":0.88\
+         \},\
+         "visibility":10000,\
+         "pop":0.04,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-11 18:00:00"\
+      \},\
+      \{\
+         "dt":1665522000,\
+         "main":\{\
+            "temp":286.64,\
+            "feels_like":286.16,\
+            "temp_min":284.21,\
+            "temp_max":286.64,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":935,\
+            "humidity":81,\
+            "temp_kf":2.43\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":71\
+         \},\
+         "wind":\{\
+            "speed":1.3,\
+            "deg":225,\
+            "gust":1.29\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-11 21:00:00"\
+      \},\
+      \{\
+         "dt":1665532800,\
+         "main":\{\
+            "temp":285.06,\
+            "feels_like":284.47,\
+            "temp_min":283.66,\
+            "temp_max":285.06,\
+            "pressure":1022,\
+            "sea_level":1022,\
+            "grnd_level":935,\
+            "humidity":83,\
+            "temp_kf":1.4\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":58\
+         \},\
+         "wind":\{\
+            "speed":1.2,\
+            "deg":232,\
+            "gust":1.16\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 00:00:00"\
+      \},\
+      \{\
+         "dt":1665543600,\
+         "main":\{\
+            "temp":283.14,\
+            "feels_like":283.14,\
+            "temp_min":283.14,\
+            "temp_max":283.14,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":935,\
+            "humidity":87,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":79\
+         \},\
+         "wind":\{\
+            "speed":1.03,\
+            "deg":244,\
+            "gust":1.05\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 03:00:00"\
+      \},\
+      \{\
+         "dt":1665554400,\
+         "main":\{\
+            "temp":283.32,\
+            "feels_like":282.64,\
+            "temp_min":283.32,\
+            "temp_max":283.32,\
+            "pressure":1022,\
+            "sea_level":1022,\
+            "grnd_level":935,\
+            "humidity":86,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":87\
+         \},\
+         "wind":\{\
+            "speed":0.97,\
+            "deg":245,\
+            "gust":0.94\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 06:00:00"\
+      \},\
+      \{\
+         "dt":1665565200,\
+         "main":\{\
+            "temp":288.28,\
+            "feels_like":287.55,\
+            "temp_min":288.28,\
+            "temp_max":288.28,\
+            "pressure":1022,\
+            "sea_level":1022,\
+            "grnd_level":937,\
+            "humidity":65,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.64,\
+            "deg":34,\
+            "gust":1.62\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 09:00:00"\
+      \},\
+      \{\
+         "dt":1665576000,\
+         "main":\{\
+            "temp":290.43,\
+            "feels_like":289.55,\
+            "temp_min":290.43,\
+            "temp_max":290.43,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":937,\
+            "humidity":51,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":2.31,\
+            "deg":47,\
+            "gust":2.07\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 12:00:00"\
+      \},\
+      \{\
+         "dt":1665586800,\
+         "main":\{\
+            "temp":289.22,\
+            "feels_like":288.37,\
+            "temp_min":289.22,\
+            "temp_max":289.22,\
+            "pressure":1020,\
+            "sea_level":1020,\
+            "grnd_level":935,\
+            "humidity":57,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.59,\
+            "deg":58,\
+            "gust":2.05\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 15:00:00"\
+      \},\
+      \{\
+         "dt":1665597600,\
+         "main":\{\
+            "temp":285.59,\
+            "feels_like":284.72,\
+            "temp_min":285.59,\
+            "temp_max":285.59,\
+            "pressure":1022,\
+            "sea_level":1022,\
+            "grnd_level":936,\
+            "humidity":70,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":0.93,\
+            "deg":215,\
+            "gust":1.04\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 18:00:00"\
+      \},\
+      \{\
+         "dt":1665608400,\
+         "main":\{\
+            "temp":284.99,\
+            "feels_like":284.06,\
+            "temp_min":284.99,\
+            "temp_max":284.99,\
+            "pressure":1022,\
+            "sea_level":1022,\
+            "grnd_level":936,\
+            "humidity":70,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.28,\
+            "deg":255,\
+            "gust":1.31\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 21:00:00"\
+      \},\
+      \{\
+         "dt":1665619200,\
+         "main":\{\
+            "temp":284.38,\
+            "feels_like":283.39,\
+            "temp_min":284.38,\
+            "temp_max":284.38,\
+            "pressure":1022,\
+            "sea_level":1022,\
+            "grnd_level":936,\
+            "humidity":70,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.07,\
+            "deg":255,\
+            "gust":0.99\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 00:00:00"\
+      \},\
+      \{\
+         "dt":1665630000,\
+         "main":\{\
+            "temp":284.1,\
+            "feels_like":283.13,\
+            "temp_min":284.1,\
+            "temp_max":284.1,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":934,\
+            "humidity":72,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":0.79,\
+            "deg":236,\
+            "gust":0.81\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 03:00:00"\
+      \},\
+      \{\
+         "dt":1665640800,\
+         "main":\{\
+            "temp":283.09,\
+            "feels_like":283.09,\
+            "temp_min":283.09,\
+            "temp_max":283.09,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":935,\
+            "humidity":78,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":98\
+         \},\
+         "wind":\{\
+            "speed":1.19,\
+            "deg":243,\
+            "gust":1.15\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 06:00:00"\
+      \},\
+      \{\
+         "dt":1665651600,\
+         "main":\{\
+            "temp":288.71,\
+            "feels_like":287.86,\
+            "temp_min":288.71,\
+            "temp_max":288.71,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":936,\
+            "humidity":59,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":32\
+         \},\
+         "wind":\{\
+            "speed":1.49,\
+            "deg":21,\
+            "gust":1.12\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 09:00:00"\
+      \},\
+      \{\
+         "dt":1665662400,\
+         "main":\{\
+            "temp":290.89,\
+            "feels_like":290.08,\
+            "temp_min":290.89,\
+            "temp_max":290.89,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":935,\
+            "humidity":52,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":25\
+         \},\
+         "wind":\{\
+            "speed":2.07,\
+            "deg":50,\
+            "gust":1.57\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 12:00:00"\
+      \},\
+      \{\
+         "dt":1665673200,\
+         "main":\{\
+            "temp":290.12,\
+            "feels_like":289.36,\
+            "temp_min":290.12,\
+            "temp_max":290.12,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":934,\
+            "humidity":57,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":45\
+         \},\
+         "wind":\{\
+            "speed":1.83,\
+            "deg":44,\
+            "gust":2.04\
+         \},\
+         "visibility":10000,\
+         "pop":0.02,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 15:00:00"\
+      \},\
+      \{\
+         "dt":1665684000,\
+         "main":\{\
+            "temp":285.67,\
+            "feels_like":284.99,\
+            "temp_min":285.67,\
+            "temp_max":285.67,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":933,\
+            "humidity":77,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":73\
+         \},\
+         "wind":\{\
+            "speed":0.9,\
+            "deg":203,\
+            "gust":1.24\
+         \},\
+         "visibility":10000,\
+         "pop":0.02,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 18:00:00"\
+      \},\
+      \{\
+         "dt":1665694800,\
+         "main":\{\
+            "temp":284.75,\
+            "feels_like":284.08,\
+            "temp_min":284.75,\
+            "temp_max":284.75,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":933,\
+            "humidity":81,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.59,\
+            "deg":220,\
+            "gust":1.52\
+         \},\
+         "visibility":10000,\
+         "pop":0.2,\
+         "rain":\{\
+            "3h":0.18\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 21:00:00"\
+      \},\
+      \{\
+         "dt":1665705600,\
+         "main":\{\
+            "temp":284.07,\
+            "feels_like":283.38,\
+            "temp_min":284.07,\
+            "temp_max":284.07,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":932,\
+            "humidity":83,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":94\
+         \},\
+         "wind":\{\
+            "speed":1.58,\
+            "deg":227,\
+            "gust":1.42\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 00:00:00"\
+      \},\
+      \{\
+         "dt":1665716400,\
+         "main":\{\
+            "temp":283.48,\
+            "feels_like":282.76,\
+            "temp_min":283.48,\
+            "temp_max":283.48,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":931,\
+            "humidity":84,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":82\
+         \},\
+         "wind":\{\
+            "speed":1.04,\
+            "deg":253,\
+            "gust":0.99\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 03:00:00"\
+      \},\
+      \{\
+         "dt":1665727200,\
+         "main":\{\
+            "temp":282.95,\
+            "feels_like":282.95,\
+            "temp_min":282.95,\
+            "temp_max":282.95,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":932,\
+            "humidity":87,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":47\
+         \},\
+         "wind":\{\
+            "speed":1.16,\
+            "deg":236,\
+            "gust":1.14\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 06:00:00"\
+      \},\
+      \{\
+         "dt":1665738000,\
+         "main":\{\
+            "temp":288.61,\
+            "feels_like":287.86,\
+            "temp_min":288.61,\
+            "temp_max":288.61,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":933,\
+            "humidity":63,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":800,\
+               "main":"Clear",\
+               "description":"clear sky",\
+               "icon":"01d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":6\
+         \},\
+         "wind":\{\
+            "speed":1.48,\
+            "deg":26,\
+            "gust":1.22\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 09:00:00"\
+      \},\
+      \{\
+         "dt":1665748800,\
+         "main":\{\
+            "temp":290.47,\
+            "feels_like":289.64,\
+            "temp_min":290.47,\
+            "temp_max":290.47,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":933,\
+            "humidity":53,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":25\
+         \},\
+         "wind":\{\
+            "speed":2.32,\
+            "deg":28,\
+            "gust":1.58\
+         \},\
+         "visibility":10000,\
+         "pop":0.16,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 12:00:00"\
+      \},\
+      \{\
+         "dt":1665759600,\
+         "main":\{\
+            "temp":289.47,\
+            "feels_like":288.67,\
+            "temp_min":289.47,\
+            "temp_max":289.47,\
+            "pressure":1016,\
+            "sea_level":1016,\
+            "grnd_level":932,\
+            "humidity":58,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":58\
+         \},\
+         "wind":\{\
+            "speed":1.21,\
+            "deg":37,\
+            "gust":1.47\
+         \},\
+         "visibility":10000,\
+         "pop":0.14,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 15:00:00"\
+      \},\
+      \{\
+         "dt":1665770400,\
+         "main":\{\
+            "temp":284.96,\
+            "feels_like":284.21,\
+            "temp_min":284.96,\
+            "temp_max":284.96,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":932,\
+            "humidity":77,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":67\
+         \},\
+         "wind":\{\
+            "speed":0.86,\
+            "deg":191,\
+            "gust":0.86\
+         \},\
+         "visibility":10000,\
+         "pop":0.08,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 18:00:00"\
+      \},\
+      \{\
+         "dt":1665781200,\
+         "main":\{\
+            "temp":283.97,\
+            "feels_like":283.2,\
+            "temp_min":283.97,\
+            "temp_max":283.97,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":932,\
+            "humidity":80,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":801,\
+               "main":"Clouds",\
+               "description":"few clouds",\
+               "icon":"02n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":12\
+         \},\
+         "wind":\{\
+            "speed":1.69,\
+            "deg":221,\
+            "gust":1.56\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 21:00:00"\
+      \},\
+      \{\
+         "dt":1665792000,\
+         "main":\{\
+            "temp":283.41,\
+            "feels_like":282.61,\
+            "temp_min":283.41,\
+            "temp_max":283.41,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":932,\
+            "humidity":81,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":801,\
+               "main":"Clouds",\
+               "description":"few clouds",\
+               "icon":"02n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":12\
+         \},\
+         "wind":\{\
+            "speed":1.85,\
+            "deg":218,\
+            "gust":1.69\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 00:00:00"\
+      \},\
+      \{\
+         "dt":1665802800,\
+         "main":\{\
+            "temp":283.02,\
+            "feels_like":282.36,\
+            "temp_min":283.02,\
+            "temp_max":283.02,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":931,\
+            "humidity":81,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":801,\
+               "main":"Clouds",\
+               "description":"few clouds",\
+               "icon":"02n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":15\
+         \},\
+         "wind":\{\
+            "speed":1.8,\
+            "deg":216,\
+            "gust":1.65\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 03:00:00"\
+      \},\
+      \{\
+         "dt":1665813600,\
+         "main":\{\
+            "temp":283.08,\
+            "feels_like":282.51,\
+            "temp_min":283.08,\
+            "temp_max":283.08,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":931,\
+            "humidity":80,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":34\
+         \},\
+         "wind":\{\
+            "speed":1.71,\
+            "deg":206,\
+            "gust":1.55\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 06:00:00"\
+      \},\
+      \{\
+         "dt":1665824400,\
+         "main":\{\
+            "temp":289.61,\
+            "feels_like":288.77,\
+            "temp_min":289.61,\
+            "temp_max":289.61,\
+            "pressure":1016,\
+            "sea_level":1016,\
+            "grnd_level":932,\
+            "humidity":56,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":64\
+         \},\
+         "wind":\{\
+            "speed":0.47,\
+            "deg":96,\
+            "gust":1.25\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 09:00:00"\
+      \},\
+      \{\
+         "dt":1665835200,\
+         "main":\{\
+            "temp":291.78,\
+            "feels_like":290.98,\
+            "temp_min":291.78,\
+            "temp_max":291.78,\
+            "pressure":1015,\
+            "sea_level":1015,\
+            "grnd_level":932,\
+            "humidity":49,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":50\
+         \},\
+         "wind":\{\
+            "speed":1.1,\
+            "deg":52,\
+            "gust":1.66\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 12:00:00"\
+      \},\
+      \{\
+         "dt":1665846000,\
+         "main":\{\
+            "temp":290.53,\
+            "feels_like":289.84,\
+            "temp_min":290.53,\
+            "temp_max":290.53,\
+            "pressure":1015,\
+            "sea_level":1015,\
+            "grnd_level":931,\
+            "humidity":58,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":73\
+         \},\
+         "wind":\{\
+            "speed":0.74,\
+            "deg":75,\
+            "gust":2.06\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 15:00:00"\
+      \},\
+      \{\
+         "dt":1665856800,\
+         "main":\{\
+            "temp":286.56,\
+            "feels_like":285.94,\
+            "temp_min":286.56,\
+            "temp_max":286.56,\
+            "pressure":1017,\
+            "sea_level":1017,\
+            "grnd_level":932,\
+            "humidity":76,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":80\
+         \},\
+         "wind":\{\
+            "speed":1.16,\
+            "deg":190,\
+            "gust":1.89\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 18:00:00"\
+      \},\
+      \{\
+         "dt":1665867600,\
+         "main":\{\
+            "temp":285.45,\
+            "feels_like":284.82,\
+            "temp_min":285.45,\
+            "temp_max":285.45,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":932,\
+            "humidity":80,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":53\
+         \},\
+         "wind":\{\
+            "speed":2.15,\
+            "deg":221,\
+            "gust":2.41\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 21:00:00"\
+      \},\
+      \{\
+         "dt":1665878400,\
+         "main":\{\
+            "temp":286.5,\
+            "feels_like":285.9,\
+            "temp_min":286.5,\
+            "temp_max":286.5,\
+            "pressure":1018,\
+            "sea_level":1018,\
+            "grnd_level":933,\
+            "humidity":77,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":69\
+         \},\
+         "wind":\{\
+            "speed":1.21,\
+            "deg":219,\
+            "gust":2.04\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 00:00:00"\
+      \},\
+      \{\
+         "dt":1665889200,\
+         "main":\{\
+            "temp":285.73,\
+            "feels_like":285.16,\
+            "temp_min":285.73,\
+            "temp_max":285.73,\
+            "pressure":1019,\
+            "sea_level":1019,\
+            "grnd_level":933,\
+            "humidity":81,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":1.24,\
+            "deg":205,\
+            "gust":1.84\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 03:00:00"\
+      \},\
+      \{\
+         "dt":1665900000,\
+         "main":\{\
+            "temp":286.1,\
+            "feels_like":285.59,\
+            "temp_min":286.1,\
+            "temp_max":286.1,\
+            "pressure":1020,\
+            "sea_level":1020,\
+            "grnd_level":934,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":0.82,\
+            "deg":213,\
+            "gust":1.26\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 06:00:00"\
+      \},\
+      \{\
+         "dt":1665910800,\
+         "main":\{\
+            "temp":288.58,\
+            "feels_like":288.06,\
+            "temp_min":288.58,\
+            "temp_max":288.58,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":936,\
+            "humidity":72,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":0.14,\
+            "deg":0,\
+            "gust":0.95\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 09:00:00"\
+      \},\
+      \{\
+         "dt":1665921600,\
+         "main":\{\
+            "temp":290.56,\
+            "feels_like":290.05,\
+            "temp_min":290.56,\
+            "temp_max":290.56,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":936,\
+            "humidity":65,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":95\
+         \},\
+         "wind":\{\
+            "speed":1,\
+            "deg":66,\
+            "gust":1.34\
+         \},\
+         "visibility":10000,\
+         "pop":0.24,\
+         "rain":\{\
+            "3h":0.12\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 12:00:00"\
+      \},\
+      \{\
+         "dt":1665932400,\
+         "main":\{\
+            "temp":289.09,\
+            "feels_like":288.67,\
+            "temp_min":289.09,\
+            "temp_max":289.09,\
+            "pressure":1021,\
+            "sea_level":1021,\
+            "grnd_level":936,\
+            "humidity":74,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":89\
+         \},\
+         "wind":\{\
+            "speed":0.74,\
+            "deg":97,\
+            "gust":1.13\
+         \},\
+         "visibility":10000,\
+         "pop":0.35,\
+         "rain":\{\
+            "3h":0.12\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 15:00:00"\
+      \}\
+   ],\
+   "city":\{\
+      "id":3163858,\
+      "name":"Zocca",\
+      "coord":\{\
+         "lat":44.34,\
+         "lon":10.99\
+      \},\
+      "country":"IT",\
+      "population":4593,\
+      "timezone":7200,\
+      "sunrise":1665465928,\
+      "sunset":1665506392\
+   \}\
+\}\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\pard\pardeftab560\partightenfactor0
+
+\f1\b0 \cf2 - 
+\f0\b \cf0 Example of API call #2
+\f1\b0 \cf2 :\
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=342624122126d3a53485bbdac2436ae3"}}{\fldrslt \cf2 api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=342624122126d3a53485bbdac2436ae3}}\
+\
+\{\
+   "coord":\{\
+      "lon":-0.1257,\
+      "lat":51.5085\
+   \},\
+   "weather":[\
+      \{\
+         "id":802,\
+         "main":"Clouds",\
+         "description":"scattered clouds",\
+         "icon":"03d"\
+      \}\
+   ],\
+   "base":"stations",\
+   "main":\{\
+      "temp":287.31,\
+      "feels_like":286.3,\
+      "temp_min":285.29,\
+      "temp_max":288.53,\
+      "pressure":1024,\
+      "humidity":58\
+   \},\
+   "visibility":10000,\
+   "wind":\{\
+      "speed":1.54,\
+      "deg":120\
+   \},\
+   "clouds":\{\
+      "all":48\
+   \},\
+   "dt":1665506519,\
+   "sys":\{\
+      "type":2,\
+      "id":2075535,\
+      "country":"GB",\
+      "sunrise":1665469033,\
+      "sunset":1665508622\
+   \},\
+   "timezone":3600,\
+   "id":2643743,\
+   "name":"London",\
+   "cod":200\
+\}\
+\
+\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 Weather icons
+\f1\b0 \cf2 \'85 {\field{\*\fldinst{HYPERLINK "https://openweathermap.org/weather-conditions"}}{\fldrslt https://openweathermap.org/weather-conditions}}\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\b0 \
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 EXAMPLE CALL #3
+\f1\b0 \cf2 \'85\
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://api.openweathermap.org/data/2.5/find?q=Mal&type=like&cnt=10&units=metric&appid=b4af92bbda4d0b6e66744b4df7fe1422"}}{\fldrslt \cf2 https://api.openweathermap.org/data/2.5/find?q=Mal&type=like&cnt=10&units=metric&appid=342624122126d3a53485bbdac2436ae3}}\
+\
+\{\
+   "message":"like",\
+   "cod":"200",\
+   "count":4,\
+   "list":[\
+      \{\
+         "id":2792413,\
+         "name":"Mal",\
+         "coord":\{\
+            "lat":50.769,\
+            "lon":5.5224\
+         \},\
+         "main":\{\
+            "temp":13.47,\
+            "feels_like":12.47,\
+            "temp_min":12.15,\
+            "temp_max":14.92,\
+            "pressure":1025,\
+            "humidity":61\
+         \},\
+         "dt":1665504546,\
+         "wind":\{\
+            "speed":3.6,\
+            "deg":30\
+         \},\
+         "sys":\{\
+            "country":"BE"\
+         \},\
+         "rain":null,\
+         "snow":null,\
+         "clouds":\{\
+            "all":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":800,\
+               "main":"Clear",\
+               "description":"clear sky",\
+               "icon":"01d"\
+            \}\
+         ]\
+      \},\
+      \{\
+         "id":682729,\
+         "name":"Mal",\
+         "coord":\{\
+            "lat":45.5048,\
+            "lon":22.3972\
+         \},\
+         "main":\{\
+            "temp":15.89,\
+            "feels_like":15.44,\
+            "temp_min":15.89,\
+            "temp_max":15.89,\
+            "pressure":1021,\
+            "humidity":73,\
+            "sea_level":1021,\
+            "grnd_level":984\
+         \},\
+         "dt":1665504568,\
+         "wind":\{\
+            "speed":0.24,\
+            "deg":340\
+         \},\
+         "sys":\{\
+            "country":"RO"\
+         \},\
+         "rain":null,\
+         "snow":null,\
+         "clouds":\{\
+            "all":92\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ]\
+      \},\
+      \{\
+         "id":667101,\
+         "name":"Mal",\
+         "coord":\{\
+            "lat":47.0698,\
+            "lon":22.8144\
+         \},\
+         "main":\{\
+            "temp":13.71,\
+            "feels_like":13.07,\
+            "temp_min":13.71,\
+            "temp_max":13.71,\
+            "pressure":1022,\
+            "humidity":74,\
+            "sea_level":1022,\
+            "grnd_level":981\
+         \},\
+         "dt":1665504329,\
+         "wind":\{\
+            "speed":1.49,\
+            "deg":54\
+         \},\
+         "sys":\{\
+            "country":"RO"\
+         \},\
+         "rain":null,\
+         "snow":null,\
+         "clouds":\{\
+            "all":46\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ]\
+      \},\
+      \{\
+         "id":318766,\
+         "name":"Mal",\
+         "coord":\{\
+            "lat":38.0487,\
+            "lon":39.6095\
+         \},\
+         "main":\{\
+            "temp":21.36,\
+            "feels_like":20.47,\
+            "temp_min":21.36,\
+            "temp_max":21.36,\
+            "pressure":1016,\
+            "humidity":35,\
+            "sea_level":1016,\
+            "grnd_level":938\
+         \},\
+         "dt":1665504545,\
+         "wind":\{\
+            "speed":2.09,\
+            "deg":343\
+         \},\
+         "sys":\{\
+            "country":"TR"\
+         \},\
+         "rain":null,\
+         "snow":null,\
+         "clouds":\{\
+            "all":1\
+         \},\
+         "weather":[\
+            \{\
+               "id":800,\
+               "main":"Clear",\
+               "description":"clear sky",\
+               "icon":"01n"\
+            \}\
+         ]\
+      \}\
+   ]\
+\}\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\b0 \
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf0 EXAMPLE CALL #4
+\f1\b0 \cf2 \'85\
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://api.openweathermap.org/data/2.5/forecast?id=3146508&units=metric&appid=b4af92bbda4d0b6e66744b4df7fe1422"}}{\fldrslt \cf2 https://api.openweathermap.org/data/2.5/forecast?id=3146508&units=metric&appid=342624122126d3a53485bbdac2436ae3}}\
+\
+\{\
+   "cod":"200",\
+   "message":0,\
+   "cnt":40,\
+   "list":[\
+      \{\
+         "dt":1665511200,\
+         "main":\{\
+            "temp":5.88,\
+            "feels_like":1.14,\
+            "temp_min":5.88,\
+            "temp_max":6.54,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1009,\
+            "humidity":72,\
+            "temp_kf":-0.66\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":92\
+         \},\
+         "wind":\{\
+            "speed":8.59,\
+            "deg":282,\
+            "gust":13.47\
+         \},\
+         "visibility":10000,\
+         "pop":1,\
+         "rain":\{\
+            "3h":0.22\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-11 18:00:00"\
+      \},\
+      \{\
+         "dt":1665522000,\
+         "main":\{\
+            "temp":5.88,\
+            "feels_like":1.59,\
+            "temp_min":5.88,\
+            "temp_max":5.89,\
+            "pressure":1012,\
+            "sea_level":1012,\
+            "grnd_level":1011,\
+            "humidity":73,\
+            "temp_kf":-0.01\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":75\
+         \},\
+         "wind":\{\
+            "speed":7.17,\
+            "deg":282,\
+            "gust":12.19\
+         \},\
+         "visibility":10000,\
+         "pop":0.61,\
+         "rain":\{\
+            "3h":0.16\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-11 21:00:00"\
+      \},\
+      \{\
+         "dt":1665532800,\
+         "main":\{\
+            "temp":6.05,\
+            "feels_like":2.14,\
+            "temp_min":6.05,\
+            "temp_max":6.14,\
+            "pressure":1013,\
+            "sea_level":1013,\
+            "grnd_level":1011,\
+            "humidity":74,\
+            "temp_kf":-0.09\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":74\
+         \},\
+         "wind":\{\
+            "speed":6.22,\
+            "deg":279,\
+            "gust":11.28\
+         \},\
+         "visibility":10000,\
+         "pop":0.69,\
+         "rain":\{\
+            "3h":0.28\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 00:00:00"\
+      \},\
+      \{\
+         "dt":1665543600,\
+         "main":\{\
+            "temp":5.81,\
+            "feels_like":2.77,\
+            "temp_min":5.81,\
+            "temp_max":5.81,\
+            "pressure":1014,\
+            "sea_level":1014,\
+            "grnd_level":1012,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":92\
+         \},\
+         "wind":\{\
+            "speed":4.15,\
+            "deg":272,\
+            "gust":8.74\
+         \},\
+         "visibility":10000,\
+         "pop":0.72,\
+         "rain":\{\
+            "3h":0.21\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 03:00:00"\
+      \},\
+      \{\
+         "dt":1665554400,\
+         "main":\{\
+            "temp":5.05,\
+            "feels_like":2.66,\
+            "temp_min":5.05,\
+            "temp_max":5.05,\
+            "pressure":1014,\
+            "sea_level":1014,\
+            "grnd_level":1012,\
+            "humidity":92,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":94\
+         \},\
+         "wind":\{\
+            "speed":2.88,\
+            "deg":202,\
+            "gust":4.03\
+         \},\
+         "visibility":10000,\
+         "pop":0.74,\
+         "rain":\{\
+            "3h":0.39\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 06:00:00"\
+      \},\
+      \{\
+         "dt":1665565200,\
+         "main":\{\
+            "temp":6.07,\
+            "feels_like":3.95,\
+            "temp_min":6.07,\
+            "temp_max":6.07,\
+            "pressure":1014,\
+            "sea_level":1014,\
+            "grnd_level":1012,\
+            "humidity":90,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":2.78,\
+            "deg":165,\
+            "gust":5.65\
+         \},\
+         "visibility":10000,\
+         "pop":0.31,\
+         "rain":\{\
+            "3h":0.29\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 09:00:00"\
+      \},\
+      \{\
+         "dt":1665576000,\
+         "main":\{\
+            "temp":6.91,\
+            "feels_like":5.86,\
+            "temp_min":6.91,\
+            "temp_max":6.91,\
+            "pressure":1013,\
+            "sea_level":1013,\
+            "grnd_level":1011,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.73,\
+            "deg":138,\
+            "gust":3.61\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 12:00:00"\
+      \},\
+      \{\
+         "dt":1665586800,\
+         "main":\{\
+            "temp":6.9,\
+            "feels_like":6.9,\
+            "temp_min":6.9,\
+            "temp_max":6.9,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1009,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":0.84,\
+            "deg":100,\
+            "gust":1.45\
+         \},\
+         "visibility":10000,\
+         "pop":0.04,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-12 15:00:00"\
+      \},\
+      \{\
+         "dt":1665597600,\
+         "main":\{\
+            "temp":6,\
+            "feels_like":6,\
+            "temp_min":6,\
+            "temp_max":6,\
+            "pressure":1010,\
+            "sea_level":1010,\
+            "grnd_level":1008,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.28,\
+            "deg":101,\
+            "gust":1.68\
+         \},\
+         "visibility":10000,\
+         "pop":0.02,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 18:00:00"\
+      \},\
+      \{\
+         "dt":1665608400,\
+         "main":\{\
+            "temp":6.37,\
+            "feels_like":6.37,\
+            "temp_min":6.37,\
+            "temp_max":6.37,\
+            "pressure":1009,\
+            "sea_level":1009,\
+            "grnd_level":1006,\
+            "humidity":79,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.33,\
+            "deg":82,\
+            "gust":1.6\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-12 21:00:00"\
+      \},\
+      \{\
+         "dt":1665619200,\
+         "main":\{\
+            "temp":5.75,\
+            "feels_like":5.75,\
+            "temp_min":5.75,\
+            "temp_max":5.75,\
+            "pressure":1008,\
+            "sea_level":1008,\
+            "grnd_level":1006,\
+            "humidity":78,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.14,\
+            "deg":151,\
+            "gust":1.51\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 00:00:00"\
+      \},\
+      \{\
+         "dt":1665630000,\
+         "main":\{\
+            "temp":6.83,\
+            "feels_like":4.78,\
+            "temp_min":6.83,\
+            "temp_max":6.83,\
+            "pressure":1009,\
+            "sea_level":1009,\
+            "grnd_level":1006,\
+            "humidity":74,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":2.89,\
+            "deg":191,\
+            "gust":4.81\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 03:00:00"\
+      \},\
+      \{\
+         "dt":1665640800,\
+         "main":\{\
+            "temp":7.26,\
+            "feels_like":4.92,\
+            "temp_min":7.26,\
+            "temp_max":7.26,\
+            "pressure":1010,\
+            "sea_level":1010,\
+            "grnd_level":1007,\
+            "humidity":85,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":3.48,\
+            "deg":204,\
+            "gust":6.73\
+         \},\
+         "visibility":10000,\
+         "pop":0.09,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 06:00:00"\
+      \},\
+      \{\
+         "dt":1665651600,\
+         "main":\{\
+            "temp":9.04,\
+            "feels_like":6.96,\
+            "temp_min":9.04,\
+            "temp_max":9.04,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1009,\
+            "humidity":78,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":3.72,\
+            "deg":264,\
+            "gust":6.62\
+         \},\
+         "visibility":10000,\
+         "pop":0.55,\
+         "rain":\{\
+            "3h":0.37\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 09:00:00"\
+      \},\
+      \{\
+         "dt":1665662400,\
+         "main":\{\
+            "temp":9.26,\
+            "feels_like":7.38,\
+            "temp_min":9.26,\
+            "temp_max":9.26,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1009,\
+            "humidity":66,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":89\
+         \},\
+         "wind":\{\
+            "speed":3.42,\
+            "deg":264,\
+            "gust":4.79\
+         \},\
+         "visibility":10000,\
+         "pop":0.44,\
+         "rain":\{\
+            "3h":0.2\
+         \},\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 12:00:00"\
+      \},\
+      \{\
+         "dt":1665673200,\
+         "main":\{\
+            "temp":8.25,\
+            "feels_like":7.43,\
+            "temp_min":8.25,\
+            "temp_max":8.25,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1009,\
+            "humidity":70,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":81\
+         \},\
+         "wind":\{\
+            "speed":1.71,\
+            "deg":228,\
+            "gust":2.52\
+         \},\
+         "visibility":10000,\
+         "pop":0.07,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-13 15:00:00"\
+      \},\
+      \{\
+         "dt":1665684000,\
+         "main":\{\
+            "temp":6.23,\
+            "feels_like":4.26,\
+            "temp_min":6.23,\
+            "temp_max":6.23,\
+            "pressure":1012,\
+            "sea_level":1012,\
+            "grnd_level":1009,\
+            "humidity":86,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":50\
+         \},\
+         "wind":\{\
+            "speed":2.62,\
+            "deg":194,\
+            "gust":3.66\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 18:00:00"\
+      \},\
+      \{\
+         "dt":1665694800,\
+         "main":\{\
+            "temp":5.89,\
+            "feels_like":4.75,\
+            "temp_min":5.89,\
+            "temp_max":5.89,\
+            "pressure":1012,\
+            "sea_level":1012,\
+            "grnd_level":1009,\
+            "humidity":91,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":70\
+         \},\
+         "wind":\{\
+            "speed":1.68,\
+            "deg":142,\
+            "gust":2.2\
+         \},\
+         "visibility":10000,\
+         "pop":0.01,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-13 21:00:00"\
+      \},\
+      \{\
+         "dt":1665705600,\
+         "main":\{\
+            "temp":4.52,\
+            "feels_like":4.52,\
+            "temp_min":4.52,\
+            "temp_max":4.52,\
+            "pressure":1011,\
+            "sea_level":1011,\
+            "grnd_level":1008,\
+            "humidity":90,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":60\
+         \},\
+         "wind":\{\
+            "speed":1.2,\
+            "deg":127,\
+            "gust":1.41\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 00:00:00"\
+      \},\
+      \{\
+         "dt":1665716400,\
+         "main":\{\
+            "temp":3.58,\
+            "feels_like":3.58,\
+            "temp_min":3.58,\
+            "temp_max":3.58,\
+            "pressure":1009,\
+            "sea_level":1009,\
+            "grnd_level":1007,\
+            "humidity":89,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":28\
+         \},\
+         "wind":\{\
+            "speed":1.19,\
+            "deg":110,\
+            "gust":1.45\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 03:00:00"\
+      \},\
+      \{\
+         "dt":1665727200,\
+         "main":\{\
+            "temp":2.77,\
+            "feels_like":1.49,\
+            "temp_min":2.77,\
+            "temp_max":2.77,\
+            "pressure":1007,\
+            "sea_level":1007,\
+            "grnd_level":1005,\
+            "humidity":89,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":38\
+         \},\
+         "wind":\{\
+            "speed":1.44,\
+            "deg":81,\
+            "gust":1.79\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 06:00:00"\
+      \},\
+      \{\
+         "dt":1665738000,\
+         "main":\{\
+            "temp":5.06,\
+            "feels_like":2.91,\
+            "temp_min":5.06,\
+            "temp_max":5.06,\
+            "pressure":1005,\
+            "sea_level":1005,\
+            "grnd_level":1002,\
+            "humidity":78,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":93\
+         \},\
+         "wind":\{\
+            "speed":2.57,\
+            "deg":92,\
+            "gust":8.47\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 09:00:00"\
+      \},\
+      \{\
+         "dt":1665748800,\
+         "main":\{\
+            "temp":8.27,\
+            "feels_like":4.88,\
+            "temp_min":8.27,\
+            "temp_max":8.27,\
+            "pressure":1001,\
+            "sea_level":1001,\
+            "grnd_level":999,\
+            "humidity":67,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":92\
+         \},\
+         "wind":\{\
+            "speed":6.5,\
+            "deg":125,\
+            "gust":11.09\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 12:00:00"\
+      \},\
+      \{\
+         "dt":1665759600,\
+         "main":\{\
+            "temp":8.52,\
+            "feels_like":5.18,\
+            "temp_min":8.52,\
+            "temp_max":8.52,\
+            "pressure":998,\
+            "sea_level":998,\
+            "grnd_level":996,\
+            "humidity":68,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":6.54,\
+            "deg":142,\
+            "gust":11.03\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-14 15:00:00"\
+      \},\
+      \{\
+         "dt":1665770400,\
+         "main":\{\
+            "temp":7.31,\
+            "feels_like":6.38,\
+            "temp_min":7.31,\
+            "temp_max":7.31,\
+            "pressure":999,\
+            "sea_level":999,\
+            "grnd_level":996,\
+            "humidity":75,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.68,\
+            "deg":132,\
+            "gust":4.2\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 18:00:00"\
+      \},\
+      \{\
+         "dt":1665781200,\
+         "main":\{\
+            "temp":6.86,\
+            "feels_like":6.01,\
+            "temp_min":6.86,\
+            "temp_max":6.86,\
+            "pressure":999,\
+            "sea_level":999,\
+            "grnd_level":997,\
+            "humidity":80,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":98\
+         \},\
+         "wind":\{\
+            "speed":1.55,\
+            "deg":245,\
+            "gust":2.51\
+         \},\
+         "visibility":10000,\
+         "pop":0.14,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-14 21:00:00"\
+      \},\
+      \{\
+         "dt":1665792000,\
+         "main":\{\
+            "temp":5.9,\
+            "feels_like":4.67,\
+            "temp_min":5.9,\
+            "temp_max":5.9,\
+            "pressure":998,\
+            "sea_level":998,\
+            "grnd_level":996,\
+            "humidity":91,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":99\
+         \},\
+         "wind":\{\
+            "speed":1.76,\
+            "deg":140,\
+            "gust":2.61\
+         \},\
+         "visibility":10000,\
+         "pop":0.99,\
+         "rain":\{\
+            "3h":1.81\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 00:00:00"\
+      \},\
+      \{\
+         "dt":1665802800,\
+         "main":\{\
+            "temp":5.56,\
+            "feels_like":4.53,\
+            "temp_min":5.56,\
+            "temp_max":5.56,\
+            "pressure":997,\
+            "sea_level":997,\
+            "grnd_level":994,\
+            "humidity":92,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":500,\
+               "main":"Rain",\
+               "description":"light rain",\
+               "icon":"10n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.54,\
+            "deg":130,\
+            "gust":2.23\
+         \},\
+         "visibility":10000,\
+         "pop":0.62,\
+         "rain":\{\
+            "3h":0.5\
+         \},\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 03:00:00"\
+      \},\
+      \{\
+         "dt":1665813600,\
+         "main":\{\
+            "temp":4.41,\
+            "feels_like":2.97,\
+            "temp_min":4.41,\
+            "temp_max":4.41,\
+            "pressure":995,\
+            "sea_level":995,\
+            "grnd_level":992,\
+            "humidity":94,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":98\
+         \},\
+         "wind":\{\
+            "speed":1.74,\
+            "deg":79,\
+            "gust":2.09\
+         \},\
+         "visibility":10000,\
+         "pop":0.54,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 06:00:00"\
+      \},\
+      \{\
+         "dt":1665824400,\
+         "main":\{\
+            "temp":5.44,\
+            "feels_like":4.23,\
+            "temp_min":5.44,\
+            "temp_max":5.44,\
+            "pressure":994,\
+            "sea_level":994,\
+            "grnd_level":992,\
+            "humidity":87,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":65\
+         \},\
+         "wind":\{\
+            "speed":1.68,\
+            "deg":108,\
+            "gust":2.93\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 09:00:00"\
+      \},\
+      \{\
+         "dt":1665835200,\
+         "main":\{\
+            "temp":6.94,\
+            "feels_like":5.83,\
+            "temp_min":6.94,\
+            "temp_max":6.94,\
+            "pressure":994,\
+            "sea_level":994,\
+            "grnd_level":992,\
+            "humidity":76,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":80\
+         \},\
+         "wind":\{\
+            "speed":1.8,\
+            "deg":142,\
+            "gust":4.4\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 12:00:00"\
+      \},\
+      \{\
+         "dt":1665846000,\
+         "main":\{\
+            "temp":7.27,\
+            "feels_like":6.45,\
+            "temp_min":7.27,\
+            "temp_max":7.27,\
+            "pressure":995,\
+            "sea_level":995,\
+            "grnd_level":993,\
+            "humidity":75,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.57,\
+            "deg":220,\
+            "gust":2.56\
+         \},\
+         "visibility":10000,\
+         "pop":0.06,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-15 15:00:00"\
+      \},\
+      \{\
+         "dt":1665856800,\
+         "main":\{\
+            "temp":5.58,\
+            "feels_like":4.21,\
+            "temp_min":5.58,\
+            "temp_max":5.58,\
+            "pressure":996,\
+            "sea_level":996,\
+            "grnd_level":993,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1.84,\
+            "deg":70,\
+            "gust":2.21\
+         \},\
+         "visibility":10000,\
+         "pop":0.09,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 18:00:00"\
+      \},\
+      \{\
+         "dt":1665867600,\
+         "main":\{\
+            "temp":5.16,\
+            "feels_like":5.16,\
+            "temp_min":5.16,\
+            "temp_max":5.16,\
+            "pressure":996,\
+            "sea_level":996,\
+            "grnd_level":993,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":804,\
+               "main":"Clouds",\
+               "description":"overcast clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":100\
+         \},\
+         "wind":\{\
+            "speed":1,\
+            "deg":47,\
+            "gust":1.42\
+         \},\
+         "visibility":10000,\
+         "pop":0.07,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-15 21:00:00"\
+      \},\
+      \{\
+         "dt":1665878400,\
+         "main":\{\
+            "temp":3.89,\
+            "feels_like":3.89,\
+            "temp_min":3.89,\
+            "temp_max":3.89,\
+            "pressure":995,\
+            "sea_level":995,\
+            "grnd_level":992,\
+            "humidity":83,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":81\
+         \},\
+         "wind":\{\
+            "speed":0.9,\
+            "deg":71,\
+            "gust":1.38\
+         \},\
+         "visibility":10000,\
+         "pop":0.01,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 00:00:00"\
+      \},\
+      \{\
+         "dt":1665889200,\
+         "main":\{\
+            "temp":3.34,\
+            "feels_like":3.34,\
+            "temp_min":3.34,\
+            "temp_max":3.34,\
+            "pressure":993,\
+            "sea_level":993,\
+            "grnd_level":991,\
+            "humidity":82,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":69\
+         \},\
+         "wind":\{\
+            "speed":0.6,\
+            "deg":112,\
+            "gust":0.98\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 03:00:00"\
+      \},\
+      \{\
+         "dt":1665900000,\
+         "main":\{\
+            "temp":2.85,\
+            "feels_like":2.85,\
+            "temp_min":2.85,\
+            "temp_max":2.85,\
+            "pressure":993,\
+            "sea_level":993,\
+            "grnd_level":991,\
+            "humidity":83,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04n"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":66\
+         \},\
+         "wind":\{\
+            "speed":0.97,\
+            "deg":119,\
+            "gust":1.19\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"n"\
+         \},\
+         "dt_txt":"2022-10-16 06:00:00"\
+      \},\
+      \{\
+         "dt":1665910800,\
+         "main":\{\
+            "temp":5.18,\
+            "feels_like":3.88,\
+            "temp_min":5.18,\
+            "temp_max":5.18,\
+            "pressure":993,\
+            "sea_level":993,\
+            "grnd_level":990,\
+            "humidity":76,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":64\
+         \},\
+         "wind":\{\
+            "speed":1.72,\
+            "deg":154,\
+            "gust":2.58\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 09:00:00"\
+      \},\
+      \{\
+         "dt":1665921600,\
+         "main":\{\
+            "temp":6.46,\
+            "feels_like":5.18,\
+            "temp_min":6.46,\
+            "temp_max":6.46,\
+            "pressure":993,\
+            "sea_level":993,\
+            "grnd_level":990,\
+            "humidity":72,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":803,\
+               "main":"Clouds",\
+               "description":"broken clouds",\
+               "icon":"04d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":59\
+         \},\
+         "wind":\{\
+            "speed":1.89,\
+            "deg":166,\
+            "gust":2.49\
+         \},\
+         "visibility":10000,\
+         "pop":0,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 12:00:00"\
+      \},\
+      \{\
+         "dt":1665932400,\
+         "main":\{\
+            "temp":5.68,\
+            "feels_like":4.83,\
+            "temp_min":5.68,\
+            "temp_max":5.68,\
+            "pressure":993,\
+            "sea_level":993,\
+            "grnd_level":991,\
+            "humidity":80,\
+            "temp_kf":0\
+         \},\
+         "weather":[\
+            \{\
+               "id":802,\
+               "main":"Clouds",\
+               "description":"scattered clouds",\
+               "icon":"03d"\
+            \}\
+         ],\
+         "clouds":\{\
+            "all":48\
+         \},\
+         "wind":\{\
+            "speed":1.42,\
+            "deg":191,\
+            "gust":2.24\
+         \},\
+         "visibility":10000,\
+         "pop":0.02,\
+         "sys":\{\
+            "pod":"d"\
+         \},\
+         "dt_txt":"2022-10-16 15:00:00"\
+      \}\
+   ],\
+   "city":\{\
+      "id":3146508,\
+      "name":"Malm",\
+      "coord":\{\
+         "lat":64.0721,\
+         "lon":11.2172\
+      \},\
+      "country":"NO",\
+      "population":0,\
+      "timezone":7200,\
+      "sunrise":1665467537,\
+      "sunset":1665504674\
+   \}\
+\}\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab560\pardirnatural\partightenfactor0
+
+\f1\b0 \cf2 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97 \cf0 CODE REVIEW & BEST PRACTICES\'85 REMINDER
+\f1\b0 \cf2  
+\f0\b \'97\'97\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab560\pardirnatural\partightenfactor0
+\cf0 Architecture\'85
+\f1\b0 \cf2 \
+User Interface handles interactions.\
+Business Logic handles concepts & behavior of the app to match company needs.\
+Data Access exposes data stored to business layer.\
+\'85Higher layer can access any layer below it, but not vice versa.\
+Make sure that the Directory Structure is being followed.\
+Separate logic from action.\
+All of the business logic of your application lives in the value layer, goes in View Model.\
+GUI Views don't have any Data Objects.\
+Single responsibility, different code for different tasks.\
+Create separate classes (and files) to manage different kind of responsibilities to avoid AppDelegate overuse.\
+\
+\
+
+\f0\b \cf0 Clarity\'85
+\f1\b0 \cf2 \
+Avoid ambiguous method names, be crystal clear when naming things by ensuring name says what it does.\
+Variable names (i.e. Booleans) should be interrogative.\
+Namespace all constants by use, 'enum Xyz' with static let xyz, inside an 'enum Current'.\
+Fonts, Colors, etc. should not be accessed at random, a separate file should handle them.\
+Indentations should be consistent, code easy to read.\
+Keep It Simple Stupid.\
+If any Complex Logic is involved, check there is a Comment Explaining it.\
+Prefer using High Order Functions where returns or arguments can be functions, closures.\
+Check if any API provided by Apple can make things simpler.\
+Don\'92t Repeat Yourself.\
+Avoid disabling unused code, if you don\'92t need it now, remove it.\
+Improve any bad code if you can.\
+Ensure Guidelines set by the team are followed, Lint check common use (SwiftLint).\
+\
+\
+
+\f0\b \cf0 Understandable, clean code\'85
+\f1\b0 \cf2 \
+Prefer enum, switch over if else.\
+Check if any hard-coded checks (maybe strings) can be changed to enum.\
+Use Nested Types clearly, like putting enum inside your Class, to avoid putting them in global scope.\
+Avoid nested structures (loops, if/else).\
+Use variadic parameters, so multiple values are allowed. i.e. "parameter_here..."\
+Conformance to Protocols should be in Extensions.\
+Avoid Type Inference.\
+Avoid overusing reference types \'97 only use reference types for live objects.\
+Design to inject dependencies manually and ensure that Dependencies are injected manually.\
+Prevent dependency injection by avoiding overuse of any default parameters.\
+Make sure there are no Retain Cycles, in order to deallocate as intended.\
+Never(?) use implicitly unwrapped properties.\
+Make sure there are no Force Unwraps.\
+Only use '_' when needed, in unused return or ignored in completion blocks.\
+Classes should be final by default.\
+\
+\
+
+\f0\b \cf0 Security\'85
+\f1\b0 \cf2 \
+Disable auto-correct for sensitive keyboard input with autocorrectionType property set to UITextAutocorrectionTypeNo.\
+Each and every text input must be checked for bad characters and escape sequences.\
+Use NSSecureCoding in place of NSCoding to avoid outside data hacking.\
+Use isExcludedFromBackupKey to avoid iCloud getting sensitive data.\
+\
+\
+
+\f0\b \cf0 QA\'85
+\f1\b0 \cf2 \
+Verify the main functionality of the app works.\
+Navigate the most common workflow.\
+Ensure Bug fixes perform adequately.\
+Ensure no import of unnecessary modules.\
+Check if any deprecated API is being used.\
+Check if there are unintended changes in the Public Release.\
+Avoid extensive logging.  Just use error.\
+Error check corner cases (i.e. Error Handling as in backend fails should show an Error Message).\
+Ensure Code Coverage of all new code, when code changes a corresponding unit test exists for every case within its module.\
+\
+\
+
+\f0\b \cf0 Unit Tests\'85
+\f1\b0 \cf2 \
+Given x\'85 When y\'85 Then\'85 z\
+Use consistent naming conventions.\
+It\'92s better to test as you commit code changes to avoid errors.\
+All the bugs found must be fixed before moving to the next phase.\
+Group related unit tests together in their own suite.\
+Only test what is needed and verify that it works as expected.\
+Focus more on the tests that affect the behavior of the system.\
+Test individual pieces of code, one at a time.\
+Test your model in isolation, test cannot be using UIKit.\
+Set up unit tests for views and unit tests for controllers.\
+Write tests for all of the edge cases.\
+Test boundary conditions if any possibility exists for Index Out of Bounds Exception (i.e. Accessing values from an Array).\
+Test app\'92s model and async functionality.\
+Write unit tests for asynchronous code.\
+\
+\
+
+\f0\b \cf0 Team Revision\'85
+\f1\b0 \cf2 \
+Make the Quality Assurance approval MANDATORY\'85\
+A Merge Check ensures good implementation for merging without bugs.\
+Developer Approval ensures code quality.\
+Quality Assurance Approval ensures no bugs exist.\
+\pard\pardeftab560\partightenfactor0
+
+\f0\b \cf2 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+Add \'93SwiftLint\'94 as \'93Run Script SwiftLint\'94, in \'93Build Phases\'94, after \'93Compile Sources\'94\'85\
+\pard\tx840\pardeftab840\pardirnatural\partightenfactor0
+
+\f2\b0\fs34 \cf11 \cb8 export\cf12  PATH=\cf13 "\cf12 $PATH\cf13 :/opt/homebrew/bin"\cf12 \
+\cf11 if\cf12  which swiftlint > /dev/null; \cf11 then\cf12 \
+    swiftlint lint --fix --format && swiftlint\
+\cf11 else\cf12 \
+  \cf11 echo\cf12  \cf13 "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\\n note:       \'85or if you have brew, install using\'85\\n note:      brew install swiftlint"\cf12 \
+  \cf11 exit\cf12  \cf14 1\cf12 \
+\cf11 fi\cf12 \
+\
+\
+\pard\pardeftab560\partightenfactor0
+
+\f1\fs36 \cf2 \cb1 Useful 
+\f0\b \cf0 Helper tools
+\f1\b0 \cf2  for using Mock Data\'85\
+\
+#1\'85 To 
+\f0\b \cf0 figure out the JSON structure
+\f1\b0 \cf2  given in example calls, for reference / design.\
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://jsonformatter.curiousconcept.com/"}}{\fldrslt \cf2 https://jsonformatter.curiousconcept.com/}} \'85 
+\f0\b \cf0 Readable JSON from pasted raw JSON
+\f1\b0 \cf2 .\
+\
+#2\'85 To 
+\f0\b \cf0 create Models
+\f1\b0 \cf2  for data fetched\'85\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://app.quicktype.io/#l=swift"}}{\fldrslt \cf2 https://app.quicktype.io/#l=swift}} \'85 
+\f0\b \cf0 JSON schema in Swift from pasted JSON
+\f1\b0 \cf2 .\
+\pard\pardeftab560\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://designer.mocky.io/design"}}{\fldrslt \cf2 https://designer.mocky.io/design}} \'85 
+\f0\b \cf0 Mock Network request
+\f1\b0 \cf2  data.\
+\
+To 
+\f0\b \cf0 create JSON data as you type
+\f1\b0 \cf2  info\'85 \
+\pard\pardeftab560\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://beta5.objgen.com/json/local/design"}}{\fldrslt \cf2 https://beta5.objgen.com/json/local/design}} \'85 
+\f0\b \cf0 Design JSON format from written text
+\f1\b0 \cf2 .\
+}

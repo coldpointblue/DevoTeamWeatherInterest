@@ -14,6 +14,7 @@
 		725875E428F748780099AFB1 /* DevoTeamWeatherInterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725875E328F748780099AFB1 /* DevoTeamWeatherInterestTests.swift */; };
 		725875EE28F748780099AFB1 /* DevoTeamWeatherInterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725875ED28F748780099AFB1 /* DevoTeamWeatherInterestUITests.swift */; };
 		725875F028F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */; };
+		725875FE28F74FBE0099AFB1 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FD28F74FBE0099AFB1 /* README.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		725875E928F748780099AFB1 /* DevoTeamWeatherInterestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevoTeamWeatherInterestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		725875ED28F748780099AFB1 /* DevoTeamWeatherInterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoTeamWeatherInterestUITests.swift; sourceTree = "<group>"; };
 		725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoTeamWeatherInterestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		725875FD28F74FBE0099AFB1 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				725875D428F748770099AFB1 /* ContentView.swift */,
 				725875D628F748780099AFB1 /* Assets.xcassets */,
 				725875D828F748780099AFB1 /* Preview Content */,
+				725875FD28F74FBE0099AFB1 /* README.rtf */,
 			);
 			path = DevoTeamWeatherInterest;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				725875DA28F748780099AFB1 /* Preview Assets.xcassets in Resources */,
+				725875FE28F74FBE0099AFB1 /* README.rtf in Resources */,
 				725875D728F748780099AFB1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
