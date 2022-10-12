@@ -15,6 +15,7 @@
 		725875EE28F748780099AFB1 /* DevoTeamWeatherInterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725875ED28F748780099AFB1 /* DevoTeamWeatherInterestUITests.swift */; };
 		725875F028F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */; };
 		725875FE28F74FBE0099AFB1 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FD28F74FBE0099AFB1 /* README.rtf */; };
+		7258760028F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		725875ED28F748780099AFB1 /* DevoTeamWeatherInterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoTeamWeatherInterestUITests.swift; sourceTree = "<group>"; };
 		725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoTeamWeatherInterestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		725875FD28F74FBE0099AFB1 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
+		725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Programming Assignment - iOS - Devoteam 2022.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				725875D628F748780099AFB1 /* Assets.xcassets */,
 				725875D828F748780099AFB1 /* Preview Content */,
 				725875FD28F74FBE0099AFB1 /* README.rtf */,
+				725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */,
 			);
 			path = DevoTeamWeatherInterest;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7258760028F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf in Resources */,
 				725875DA28F748780099AFB1 /* Preview Assets.xcassets in Resources */,
 				725875FE28F74FBE0099AFB1 /* README.rtf in Resources */,
 				725875D728F748780099AFB1 /* Assets.xcassets in Resources */,
