@@ -16,6 +16,7 @@
 		725875F028F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */; };
 		725875FE28F74FBE0099AFB1 /* README.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FD28F74FBE0099AFB1 /* README.rtf */; };
 		7258760028F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */; };
+		7258760228F751C60099AFB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760128F751C60099AFB1 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoTeamWeatherInterestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		725875FD28F74FBE0099AFB1 /* README.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = README.rtf; sourceTree = "<group>"; };
 		725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Programming Assignment - iOS - Devoteam 2022.pdf"; sourceTree = "<group>"; };
+		7258760128F751C60099AFB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				725875D828F748780099AFB1 /* Preview Content */,
 				725875FD28F74FBE0099AFB1 /* README.rtf */,
 				725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */,
+				7258760128F751C60099AFB1 /* Constants.swift */,
 			);
 			path = DevoTeamWeatherInterest;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			files = (
 				725875D528F748770099AFB1 /* ContentView.swift in Sources */,
 				725875D328F748770099AFB1 /* DevoTeamWeatherInterestApp.swift in Sources */,
+				7258760228F751C60099AFB1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
