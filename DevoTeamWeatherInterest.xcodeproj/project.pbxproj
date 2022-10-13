@@ -19,6 +19,8 @@
 		7258760228F751C60099AFB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760128F751C60099AFB1 /* Constants.swift */; };
 		7258760428F753170099AFB1 /* ExampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7258760328F753170099AFB1 /* ExampleData.json */; };
 		7258760628F755DC0099AFB1 /* AnyCityFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760528F755DC0099AFB1 /* AnyCityFetched.swift */; };
+		7258760C28F7681D0099AFB1 /* CityChoicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760B28F7681D0099AFB1 /* CityChoicesViewModel.swift */; };
+		7258760F28F76C2F0099AFB1 /* NetworkAsyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760E28F76C2F0099AFB1 /* NetworkAsyncService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		7258760128F751C60099AFB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7258760328F753170099AFB1 /* ExampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleData.json; sourceTree = "<group>"; };
 		7258760528F755DC0099AFB1 /* AnyCityFetched.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCityFetched.swift; sourceTree = "<group>"; };
+		7258760B28F7681D0099AFB1 /* CityChoicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityChoicesViewModel.swift; sourceTree = "<group>"; };
+		7258760E28F76C2F0099AFB1 /* NetworkAsyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAsyncService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +88,11 @@
 		725875C628F748770099AFB1 = {
 			isa = PBXGroup;
 			children = (
-				7258760528F755DC0099AFB1 /* AnyCityFetched.swift */,
+				725875D228F748770099AFB1 /* DevoTeamWeatherInterestApp.swift */,
+				7258760A28F7679E0099AFB1 /* Specs DevoTeamWeatherInterest roject */,
+				725875FD28F74FBE0099AFB1 /* README.rtf */,
 				725875D128F748770099AFB1 /* DevoTeamWeatherInterest */,
-				725875E228F748780099AFB1 /* DevoTeamWeatherInterestTests */,
-				725875EC28F748780099AFB1 /* DevoTeamWeatherInterestUITests */,
+				7258760D28F7696A0099AFB1 /* Automated Tests */,
 				725875D028F748770099AFB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,14 +110,12 @@
 		725875D128F748770099AFB1 /* DevoTeamWeatherInterest */ = {
 			isa = PBXGroup;
 			children = (
-				725875D228F748770099AFB1 /* DevoTeamWeatherInterestApp.swift */,
-				725875D428F748770099AFB1 /* ContentView.swift */,
+				7258760828F766D90099AFB1 /* ViewModelsLogic */,
+				7258760928F766E10099AFB1 /* Models */,
+				7258760728F766D40099AFB1 /* UIViews */,
+				7258760128F751C60099AFB1 /* Constants.swift */,
 				725875D628F748780099AFB1 /* Assets.xcassets */,
 				725875D828F748780099AFB1 /* Preview Content */,
-				725875FD28F74FBE0099AFB1 /* README.rtf */,
-				725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */,
-				7258760328F753170099AFB1 /* ExampleData.json */,
-				7258760128F751C60099AFB1 /* Constants.swift */,
 			);
 			path = DevoTeamWeatherInterest;
 			sourceTree = "<group>";
@@ -140,6 +143,49 @@
 				725875EF28F748780099AFB1 /* DevoTeamWeatherInterestUITestsLaunchTests.swift */,
 			);
 			path = DevoTeamWeatherInterestUITests;
+			sourceTree = "<group>";
+		};
+		7258760728F766D40099AFB1 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				725875D428F748770099AFB1 /* ContentView.swift */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
+		7258760828F766D90099AFB1 /* ViewModelsLogic */ = {
+			isa = PBXGroup;
+			children = (
+				7258760B28F7681D0099AFB1 /* CityChoicesViewModel.swift */,
+				7258760E28F76C2F0099AFB1 /* NetworkAsyncService.swift */,
+			);
+			path = ViewModelsLogic;
+			sourceTree = "<group>";
+		};
+		7258760928F766E10099AFB1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7258760528F755DC0099AFB1 /* AnyCityFetched.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7258760A28F7679E0099AFB1 /* Specs DevoTeamWeatherInterest roject */ = {
+			isa = PBXGroup;
+			children = (
+				725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */,
+				7258760328F753170099AFB1 /* ExampleData.json */,
+			);
+			path = "Specs DevoTeamWeatherInterest roject";
+			sourceTree = "<group>";
+		};
+		7258760D28F7696A0099AFB1 /* Automated Tests */ = {
+			isa = PBXGroup;
+			children = (
+				725875E228F748780099AFB1 /* DevoTeamWeatherInterestTests */,
+				725875EC28F748780099AFB1 /* DevoTeamWeatherInterestUITests */,
+			);
+			path = "Automated Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +345,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				725875D528F748770099AFB1 /* ContentView.swift in Sources */,
+				7258760C28F7681D0099AFB1 /* CityChoicesViewModel.swift in Sources */,
 				725875D328F748770099AFB1 /* DevoTeamWeatherInterestApp.swift in Sources */,
+				7258760F28F76C2F0099AFB1 /* NetworkAsyncService.swift in Sources */,
 				7258760228F751C60099AFB1 /* Constants.swift in Sources */,
 				7258760628F755DC0099AFB1 /* AnyCityFetched.swift in Sources */,
 			);

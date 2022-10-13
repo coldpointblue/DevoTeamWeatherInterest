@@ -55,17 +55,14 @@ struct World {
     static let webDataDownloadErrorMessage: String = "\r—————— data download ERROR\r"
     static let jsonErrorDecodingMessage: String = "\r—————— JSON Decoder ERROR\r"
 
+    static let noLocalCityName = "no local city name\r"
+
     // MARK: - Simple text for UI titles, headers
     static let welcome = "Welcome to DevoTeam WeatherInterest"
     static let weatherHeader = "DevoTeam"
     static let encouragement = "Curious? Choose a city now to check its forecast."
-    // MARK: - Debugging Helper functions
-    func printWithinBodyWherever(_ someVars: Any...) -> some View {
-        for beautyWithin in someVars { print("----> \(beautyWithin) <-----") }
-        return EmptyView()
-    }
 
-    // MARK: - print fetched JSON data or response status code.
+    // MARK: - print fetched JSON data or response status code.  See arbitrary String within UI.
     struct DebugHelpers {
         func debugPrintIncomingData(_ incomingData: Data) {
             print("\r\r" + String(data: incomingData, encoding: .utf8)! +
@@ -76,6 +73,12 @@ struct World {
             print((webResponse as? HTTPURLResponse)?.statusCode as Any,
                   terminator: " <<<——— RESPONSE statusCode\r\r")
         }
+
+        func printWithinBodyWherever(_ someVars: Any...) -> some View {
+            for beautyWithin in someVars { print("----> \(beautyWithin) <-----") }
+            return EmptyView()
+        }
+
     }
 }
 #endif
