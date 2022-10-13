@@ -27,6 +27,9 @@ import Combine
 
 struct ContentView: View {
     @EnvironmentObject var everyCityForecastViewModel: CityChoicesViewModel
+
+    @State var isWeatherDetailShown = false
+
     let allCityNames = ["Uppsala", "Enköping", "Stockholm", "Östermalm"]
 
     let debugging = World.DebugHelpers()
@@ -70,7 +73,12 @@ struct ContentView: View {
             // Use the Combine robust automatic way to load JSON.
             everyCityForecastViewModel.bindJSONData()
             everyCityForecastViewModel.inputUpdateMessage.send(.viewDidAppear)
-        })
+            print(liveData)
+        }
+        )
+        .sheet(isPresented: $isWeatherDetailShown) {
+            DetailView()
+        }
     }
 }
 
@@ -91,7 +99,9 @@ extension ContentView {
                 ForEach(allCityNames, id: \.self) { oneName in
                     Text(oneName)
                         .padding()
-                        .onTapGesture { print("Tapped \(oneName)") }
+                        .onTapGesture {
+                            isWeatherDetailShown.toggle()
+                            print("Tapped \(oneName)") }
                 }
 
             }
@@ -103,8 +113,19 @@ extension ContentView {
         return Text(World.welcome)
             .font(Font.title.weight(.bold))
             .multilineTextAlignment(.center)
-            .foregroundColor(.blue)
+            .font(.title)
+            .padding()
+            .foregroundStyle( LinearGradient(
+                colors: rainbow(),
+                startPoint: .leading,
+                endPoint: .trailing
+            ))
     }
+}
+// Colors for LinearGradient.
+func rainbow() -> [Color] {
+    return [.red, .orange, .yellow, .green, .blue, .indigo,
+            Color(red: 0.929, green: 0.507, blue: 0.929, opacity: 1.0)]
 }
 
 struct ContentView_Previews: PreviewProvider {
