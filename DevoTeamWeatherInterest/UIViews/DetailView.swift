@@ -75,7 +75,7 @@ struct DetailView: View {
                 Spacer()
             }
             Spacer()
-            Image(uiImage: UIImage(named: "SnowHikeHugo")!)
+            Image(uiImage: UIImage(named: World.photoDetail)!)
                 .resizable().aspectRatio(4/3, contentMode: ContentMode.fill)
 
         }

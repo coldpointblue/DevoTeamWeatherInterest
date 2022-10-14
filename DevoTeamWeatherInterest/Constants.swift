@@ -34,7 +34,9 @@ struct World {
     //    var remoteGroupDNBUsers = GroupDNBUsers(data: [])
     //    var remoteDNBUsersIndex: [String: DNBUserParsedJSON] = [:]
 
-    // Coordinates Example
+    static let photoDetail = "SnowHikeHugo"
+    static let photoWelcome = "ColdWinterHugo"
+    // Coordinates Live Example (Östermalm"
     struct StockholmCoords {
         static let lat: String = "59.353729"
         static let lon: String = "18.071998"

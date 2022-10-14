@@ -30,7 +30,7 @@ struct ContentView: View {
 
     @State var isWeatherDetailShown = false
 
-    let allCityNames = ["Uppsala", "Enköping", "Stockholm", "Östermalm"]
+    let allCityNames = ["Östermalm", "Uppsala <not live>", "Enköping <not live>", "Stockholm <not live>"]
 
     let debugging = World.DebugHelpers()
 
@@ -39,7 +39,7 @@ struct ContentView: View {
             .liveDataTruth
 
         VStack {
-            Image(uiImage: UIImage(named: "ColdWinterHugo")!)
+            Image(uiImage: UIImage(named: World.photoWelcome)!)
                 .resizable().aspectRatio(4/3, contentMode: ContentMode.fill)
             Group {
                 showWelcome()
