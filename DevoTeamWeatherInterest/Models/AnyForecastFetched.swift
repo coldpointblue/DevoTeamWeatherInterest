@@ -1,6 +1,6 @@
 //  ----------------------------------------------------
 //
-//  AnyCityFetched.swift
+//  AnyForecastFetched.swift
 //  Version 1.0
 //
 //  Unique ID:  26EA2AA3-8789-45D0-807B-D778CC08FE6A
@@ -21,7 +21,7 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let allCitiesFetched = try? newJSONDecoder().decode(AnyCityFetched.self, from: jsonData)
+//   let allCitiesFetched = try? newJSONDecoder().decode(AnyForecastFetched.self, from: jsonData)
 
 //
 // To read values from URLs:
@@ -35,7 +35,7 @@
 
 import Foundation
 
-// MARK: - AnyCityFetched
+// MARK: - AnyForecastFetched
 struct AnyForecastFetched: Codable {
     var cod: String?
     var message, cnt: Int?
@@ -205,11 +205,13 @@ enum Pod: String, Codable {
 // MARK: - Weather
 struct Weather: Codable {
     var id: Int?
-    var main: MainEnum?
+    var allDetail: Details?
     var weatherDescription, icon: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, main
+        case id
+        case allDetail = "main"
+
         case weatherDescription = "description"
         case icon
     }

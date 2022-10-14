@@ -92,8 +92,10 @@ extension DetailView {
             VStack {
                 Text(currentData.city?.name ?? "")
                     .font(.subheadline.bold())
-                Text("Temperature Feels Like\n\(String(currentData .weatherList?[0].forecast?.feelsLike ?? 0.00))")
-                Text("˚ Celsius")
+                Text("""
+Temperature Feels Like\n\(String(currentData.weatherList?[0].weather?[0].allDetail?.feelsLike   ?? 0.00))˚
+""")
+                Text("Celsius")
                     .padding(.bottom, 3)
                     .multilineTextAlignment(.leading)
             }
