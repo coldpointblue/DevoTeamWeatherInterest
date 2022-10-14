@@ -71,7 +71,7 @@ struct DetailView: View {
             }
             HStack {
                 toggleFavouriteButton()
-                Text("Favorite City?")
+                Text(World.favouriteQuestion)
                 Spacer()
             }
             Spacer()

@@ -30,7 +30,7 @@ struct ContentView: View {
 
     @State var isWeatherDetailShown = false
 
-    let allCityNames = ["Östermalm", "Uppsala <not live>", "Enköping <not live>", "Stockholm <not live>"]
+    let allCityNames = ["Östermalm <live>", "Uppsala <not live>", "Enköping <not live>", "Stockholm <not live>"]
 
     let debugging = World.DebugHelpers()
 
