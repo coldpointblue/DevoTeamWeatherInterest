@@ -26,7 +26,7 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @EnvironmentObject var everyCityForecastViewModel: CityChoicesViewModel
+    @EnvironmentObject var everyForecastVM: CityChoicesVM
 
     @State var isWeatherDetailShown = false
 
@@ -35,19 +35,19 @@ struct ContentView: View {
     let debugging = World.DebugHelpers()
 
     var body: some View {
-        let liveData = everyCityForecastViewModel
-            .jsonDataTruthInstance
+        let liveDataToo = everyForecastVM
+            .liveDataTruth
 
         VStack {
             Image(uiImage: UIImage(named: "ColdWinterHugo")!)
                 .resizable().aspectRatio(4/3, contentMode: ContentMode.fill)
             Group {
                 showWelcome()
-                Text(everyCityForecastViewModel.statusFlash)
+                Text(everyForecastVM.statusFlash)
                     .font(.system(.callout, design: .monospaced))
 
                 Group(content: {
-                    localCity(liveData)
+                    localCity(liveDataToo)
                     Text("\(allCityNames.count) other cities below\r")
                 })
                 .font(Font.headline.weight(.light))
@@ -71,9 +71,9 @@ struct ContentView: View {
         }
         .onAppear(perform: {
             // Use the Combine robust automatic way to load JSON.
-            everyCityForecastViewModel.bindJSONData()
-            everyCityForecastViewModel.inputUpdateMessage.send(.viewDidAppear)
-            print(liveData)
+            everyForecastVM.bindJSONData()
+            everyForecastVM.inputUpdateMessage.send(.viewDidAppear)
+            print(liveDataToo)
         }
         )
         .sheet(isPresented: $isWeatherDetailShown) {
@@ -84,11 +84,11 @@ struct ContentView: View {
 
 // MARK: - Content list with cities and their weather forecasts.
 extension ContentView {
-    fileprivate func localCity(_ liveData: AnyCityFetched) -> some View {
+    fileprivate func localCity(_ currentData: AnyForecastFetched) -> some View {
         return Text("""
-                     \(liveData.city?.name
+                     \(currentData.city?.name
                         ?? World.noLocalCityName)
-                     \(liveData.city?
+                     \(currentData.city?
                         .country ?? "")
                      """)
     }
@@ -131,6 +131,6 @@ func rainbow() -> [Color] {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(CityChoicesViewModel())
+            .environmentObject(CityChoicesVM())
     }
 }

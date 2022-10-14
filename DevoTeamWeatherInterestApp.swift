@@ -26,7 +26,7 @@ import SwiftUI
 
 @main
 struct DevoTeamWeatherInterestApp: App {
-    @StateObject var cityForecastsViewModel = CityChoicesViewModel()
+    @StateObject var cityForecastsViewModel = CityChoicesVM()
 
     var body: some Scene {
         WindowGroup {

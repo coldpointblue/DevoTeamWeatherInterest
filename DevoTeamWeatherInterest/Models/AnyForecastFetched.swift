@@ -36,7 +36,7 @@
 import Foundation
 
 // MARK: - AnyCityFetched
-struct AnyCityFetched: Codable {
+struct AnyForecastFetched: Codable {
     var cod: String?
     var message, cnt: Int?
     var weatherList: [WeatherList]?
@@ -272,7 +272,7 @@ extension URLSession {
     }
 
     func allCitiesFetchedTask(with url: URL, completionHandler:
-                                @escaping (AnyCityFetched?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+                                @escaping (AnyForecastFetched?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return self.codableTask(with: url,
                                 completionHandler: completionHandler)
     }

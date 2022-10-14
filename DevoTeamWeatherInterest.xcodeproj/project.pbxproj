@@ -19,8 +19,8 @@
 		7258760028F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */; };
 		7258760228F751C60099AFB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760128F751C60099AFB1 /* Constants.swift */; };
 		7258760428F753170099AFB1 /* ExampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7258760328F753170099AFB1 /* ExampleData.json */; };
-		7258760628F755DC0099AFB1 /* AnyCityFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760528F755DC0099AFB1 /* AnyCityFetched.swift */; };
-		7258760C28F7681D0099AFB1 /* CityChoicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760B28F7681D0099AFB1 /* CityChoicesViewModel.swift */; };
+		7258760628F755DC0099AFB1 /* AnyForecastFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760528F755DC0099AFB1 /* AnyForecastFetched.swift */; };
+		7258760C28F7681D0099AFB1 /* CityChoicesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760B28F7681D0099AFB1 /* CityChoicesVM.swift */; };
 		7258760F28F76C2F0099AFB1 /* NetworkAsyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258760E28F76C2F0099AFB1 /* NetworkAsyncService.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +57,8 @@
 		725875FF28F750790099AFB1 /* Programming Assignment - iOS - Devoteam 2022.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Programming Assignment - iOS - Devoteam 2022.pdf"; sourceTree = "<group>"; };
 		7258760128F751C60099AFB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7258760328F753170099AFB1 /* ExampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleData.json; sourceTree = "<group>"; };
-		7258760528F755DC0099AFB1 /* AnyCityFetched.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCityFetched.swift; sourceTree = "<group>"; };
-		7258760B28F7681D0099AFB1 /* CityChoicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityChoicesViewModel.swift; sourceTree = "<group>"; };
+		7258760528F755DC0099AFB1 /* AnyForecastFetched.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyForecastFetched.swift; sourceTree = "<group>"; };
+		7258760B28F7681D0099AFB1 /* CityChoicesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityChoicesVM.swift; sourceTree = "<group>"; };
 		7258760E28F76C2F0099AFB1 /* NetworkAsyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAsyncService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +159,7 @@
 		7258760828F766D90099AFB1 /* ViewModelsLogic */ = {
 			isa = PBXGroup;
 			children = (
-				7258760B28F7681D0099AFB1 /* CityChoicesViewModel.swift */,
+				7258760B28F7681D0099AFB1 /* CityChoicesVM.swift */,
 				7258760E28F76C2F0099AFB1 /* NetworkAsyncService.swift */,
 			);
 			path = ViewModelsLogic;
@@ -168,7 +168,7 @@
 		7258760928F766E10099AFB1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7258760528F755DC0099AFB1 /* AnyCityFetched.swift */,
+				7258760528F755DC0099AFB1 /* AnyForecastFetched.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,12 +348,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				725875D528F748770099AFB1 /* ContentView.swift in Sources */,
-				7258760C28F7681D0099AFB1 /* CityChoicesViewModel.swift in Sources */,
+				7258760C28F7681D0099AFB1 /* CityChoicesVM.swift in Sources */,
 				725875D328F748770099AFB1 /* DevoTeamWeatherInterestApp.swift in Sources */,
 				724A07D128F8416A00E02E8D /* DetailView.swift in Sources */,
 				7258760F28F76C2F0099AFB1 /* NetworkAsyncService.swift in Sources */,
 				7258760228F751C60099AFB1 /* Constants.swift in Sources */,
-				7258760628F755DC0099AFB1 /* AnyCityFetched.swift in Sources */,
+				7258760628F755DC0099AFB1 /* AnyForecastFetched.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

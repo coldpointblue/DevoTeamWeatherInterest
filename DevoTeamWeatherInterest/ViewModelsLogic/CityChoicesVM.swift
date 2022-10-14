@@ -21,32 +21,30 @@
 import SwiftUI
 import Combine
 
-class CityChoicesViewModel: ObservableObject {
-    @Published var jsonDataTruthInstance: AnyCityFetched =
-        AnyCityFetched()  // = try!
+final class CityChoicesVM: ObservableObject {
+    @Published var liveDataTruth = AnyForecastFetched()
 
     // Vars used in UI…
     @Published var statusFlash: String = ""
     @Published var totalShown: String = ""
 
     // Init…
-    private let webSourceCitiesWeather: CitiesProtocolType
+    private let updatedWeather: AnyCityWeather
     private var cancellables = Set<AnyCancellable>()
 
-    init(cityInfoType: CitiesProtocolType = CityInfoService()) {
-        self.webSourceCitiesWeather = cityInfoType
+    init(liveCityChoicesVM: AnyCityWeather = CityWeather()) {
+        self.updatedWeather = liveCityChoicesVM
     }
 
     // Messages as specific Input & Output triggers…
     enum SpecificInput {
         case viewDidAppear
-        case refreshButtonTapped
     }
-    let inputUpdateMessage: PassthroughSubject<CityChoicesViewModel.SpecificInput, Never> = .init()
+    let inputUpdateMessage: PassthroughSubject<CityChoicesVM.SpecificInput, Never> = .init()
 
     enum SpecificOutput {
         case downloadFailed(error: Error)
-        case downloadCityForecastsSuccess(entireCitiesList: AnyCityFetched)
+        case downloadCityForecastSuccess(currentForecast: AnyForecastFetched)
     }
     private let outputUpdateMessage: PassthroughSubject<SpecificOutput, Never> = .init()
 
@@ -54,22 +52,22 @@ class CityChoicesViewModel: ObservableObject {
     func transform(inputTrigger: AnyPublisher<SpecificInput, Never>) -> AnyPublisher<SpecificOutput, Never> {
         inputTrigger.sink { [weak self] event in
             switch event {
-            case .viewDidAppear, .refreshButtonTapped:
-                self?.nowGetCityForecastsJSON()
+            case .viewDidAppear:
+                self?.fetchCityForecastsJSON()
             }
         }.store(in: &cancellables)
         return outputUpdateMessage.eraseToAnyPublisher()
     }
 
-    fileprivate func nowGetCityForecastsJSON() {
-        webSourceCitiesWeather.downloadCityInfoList()
+    fileprivate func fetchCityForecastsJSON() {
+        updatedWeather.downloadCityWeather()
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
                     self?.outputUpdateMessage.send(.downloadFailed(error: error))
                 }
-            } receiveValue: { [weak self] everyCurrentCityForecast in
+            } receiveValue: { [weak self] liveCityForecast in
                 self?.outputUpdateMessage
-                    .send(.downloadCityForecastsSuccess(entireCitiesList: everyCurrentCityForecast))
+                    .send(.downloadCityForecastSuccess(currentForecast: liveCityForecast))
             }.store(in: &cancellables)
     }
 
@@ -79,8 +77,8 @@ class CityChoicesViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] event in
                 switch event {
-                case .downloadCityForecastsSuccess(let everyCityForecastInList):
-                    self?.jsonDataTruthInstance = everyCityForecastInList
+                case .downloadCityForecastSuccess(let forecastProcessed):
+                    self?.liveDataTruth = forecastProcessed
                 case .downloadFailed(let error):
                     self?.statusFlash = error.localizedDescription
                 }

@@ -22,9 +22,9 @@ import SwiftUI
 import Combine
 
 struct DetailView: View {
-    @EnvironmentObject var everyCityForecastViewModel: CityChoicesViewModel
-    var liveData: AnyCityFetched { everyCityForecastViewModel
-        .jsonDataTruthInstance }
+    @EnvironmentObject var everyCityForecastVM: CityChoicesVM
+    var liveDataTruth: AnyForecastFetched { everyCityForecastVM
+        .liveDataTruth }
 
     var uniqueCityID: String {
         String() // Identify a particular city by unique id.
@@ -90,9 +90,9 @@ extension DetailView {
     fileprivate func temperatureSection() -> some View {
         return VStack {
             VStack {
-                Text(liveData.city?.name ?? "")
+                Text(liveDataTruth.city?.name ?? "")
                     .font(.subheadline.bold())
-                Text("Temperature Feels Like\n\(String(liveData .weatherList?[0].forecast?.feelsLike ?? 0.00))")
+                Text("Temperature Feels Like\n\(String(liveDataTruth .weatherList?[0].forecast?.feelsLike ?? 0.00))")
                 Text("˚ Celsius")
                     .padding(.bottom, 3)
                     .multilineTextAlignment(.leading)
@@ -121,6 +121,6 @@ extension DetailView {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView()
-            .environmentObject(CityChoicesViewModel())
+            .environmentObject(CityChoicesVM())
     }
 }

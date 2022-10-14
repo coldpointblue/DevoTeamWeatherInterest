@@ -24,14 +24,20 @@ import Foundation
 import Combine
 
 // MARK: - Combine Network Service to download city weather JSON data.
-protocol CitiesProtocolType {
-    func downloadCityInfoList() -> AnyPublisher<AnyCityFetched, Error>
+
+protocol AnyCityWeather {
+    func downloadCityWeather() -> AnyPublisher<AnyForecastFetched, Error>
 }
 
-class CityInfoService: CitiesProtocolType {
+class CityWeather: AnyCityWeather {
 
-    func downloadCityInfoList() -> AnyPublisher<AnyCityFetched, Error> {
+    func downloadCityWeather() -> AnyPublisher<AnyForecastFetched, Error> {
+
+        #if PRODUCTION
+        #else
         let debugging = World.DebugHelpers()
+        #endif
+
         let validAddress = doubleCheckWebAddress(World.forecastRequest)
         let url = URL(string: validAddress)!
         let request = URLRequest(url: url)
@@ -41,20 +47,24 @@ class CityInfoService: CitiesProtocolType {
             .catch { error in
                 return Fail(error: error).eraseToAnyPublisher()
             }.map({
+
+                #if PRODUCTION
+                #else
                 debugging.debugPrintIncomingData($0.data)
+                #endif
                 return $0.data
             })
-            .decode(type: AnyCityFetched.self, decoder: JSONDecoder())
+            .decode(type: AnyForecastFetched.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }
 
 // MARK: - Network helpers.
-func doubleCheckWebAddress(_ givenAddress: String) -> String {
+func doubleCheckWebAddress(_ uncheckedURL: String) -> String {
     // In Production this would be actual verification for source address parts.
     //    print(givenAddress)
-    guard let liveWebURL = URL(string: givenAddress),
-          let validWebURL = URLRequest(url: liveWebURL).url?.absoluteString else {
+    guard let currentWebURL = URL(string: uncheckedURL),
+          let validWebURL = URLRequest(url: currentWebURL).url?.absoluteString else {
         return ""
     }
     return validWebURL
