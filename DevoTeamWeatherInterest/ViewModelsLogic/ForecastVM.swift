@@ -21,7 +21,7 @@
 import SwiftUI
 import Combine
 
-final class CityChoicesVM: ObservableObject {
+final class ForecastVM: ObservableObject {
     @Published var liveDataTruth = AnyForecastFetched()
 
     // Vars used in UI…
@@ -40,7 +40,7 @@ final class CityChoicesVM: ObservableObject {
     enum SpecificInput {
         case viewDidAppear
     }
-    let inputUpdateMessage: PassthroughSubject<CityChoicesVM.SpecificInput, Never> = .init()
+    let inputUpdateMessage: PassthroughSubject<ForecastVM.SpecificInput, Never> = .init()
 
     enum SpecificOutput {
         case downloadFailed(error: Error)

@@ -26,7 +26,7 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @EnvironmentObject var everyForecastVM: CityChoicesVM
+    @EnvironmentObject var everyForecastVM: ForecastVM
 
     @State var isWeatherDetailShown = false
 
@@ -131,6 +131,6 @@ func rainbow() -> [Color] {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(CityChoicesVM())
+            .environmentObject(ForecastVM())
     }
 }
