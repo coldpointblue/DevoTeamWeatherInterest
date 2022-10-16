@@ -97,13 +97,16 @@ extension ContentView {
         return List {
             VStack {
                 ForEach(allCityNames, id: \.self) { oneName in
-                    Text(oneName)
-                        .padding()
-                        .onTapGesture {
-                            isWeatherDetailShown.toggle()
-                            print("Tapped \(oneName)") }
+                    HStack {
+                        Text(oneName)
+                        Spacer()
+                            .padding()
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        isWeatherDetailShown.toggle()
+                        print("Tapped \(oneName)") }
                 }
-
             }
         }
         .listStyle(SidebarListStyle())
