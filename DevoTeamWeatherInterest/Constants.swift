@@ -36,22 +36,17 @@ struct World {
     }
 
     // Web requests
-    static let forecastRequest = endpoint +
+    static let forecastRequest = domainname +
         "/data/2.5/forecast?lat=" +
         StockholmCoords.lat + "&lon=" + StockholmCoords.lon + "&appid=" +
         weatherMapKey
 
     static let weatherMapKey = "342624122126d3a53485bbdac2436ae3"
-    static let endpoint = "https://api.openweathermap.org"
+    static let domainname = "https://api.openweathermap.org"
 
     // Favourites (not finished) Used to filter table with city names.
     static let favouriteQuestion = "Favorite City?"
     var favouritesUserSet: Set<String> = []
-    //    var citiesIndex: [UUID: DNBUserParsedJSON] = [:]
-    //    var citiesDisplayIndex: [DNBUserParsedJSON] = []
-
-    //    var remoteGroupDNBUsers = GroupDNBUsers(data: [])
-    //    var remoteDNBUsersIndex: [String: DNBUserParsedJSON] = [:]
 
     // MARK: - Errors Info
     static let sourceURLInvalidErrorMessage: String = "\r—————— invalid URL\r"

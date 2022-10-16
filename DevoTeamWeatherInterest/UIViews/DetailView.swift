@@ -93,7 +93,7 @@ extension DetailView {
                 Text(currentData.city?.name ?? "")
                     .font(.subheadline.bold())
                 Text("""
-Temperature Feels Like\n\(String(currentData.weatherList?[0].weather?[0].allDetail?.feelsLike   ?? 0.00))˚
+Temperature Feels Like\n\(String(currentData.weatherList?[0].weather?[0].mainMeasurements?.feelsLike   ?? 0.00))˚
 """)
                 Text("Celsius")
                     .padding(.bottom, 3)
