@@ -92,6 +92,9 @@ extension DetailView {
             VStack {
                 Text(currentData.city?.name ?? "")
                     .font(.subheadline.bold())
+
+                Text("Population: " + String((currentData.city?.population
+                                                ??  7))).multilineTextAlignment(.center)
                 Text("""
 Temperature Feels Like\n\(String(currentData.weatherList?[0].weather?[0].mainMeasurements?.feelsLike   ?? 0.00))˚
 """)

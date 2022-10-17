@@ -28,9 +28,10 @@ final class ForecastVM: ObservableObject {
     @Published var statusFlash: String = ""
     @Published var totalShown: String = ""
 
+    private var cancellables = Set<AnyCancellable>()
+
     // Init…
     private let updatedWeather: AnyCityWeather
-    private var cancellables = Set<AnyCancellable>()
 
     init(liveCityChoicesVM: AnyCityWeather = CityWeather()) {
         self.updatedWeather = liveCityChoicesVM
@@ -43,32 +44,47 @@ final class ForecastVM: ObservableObject {
     let inputUpdateMessage: PassthroughSubject<ForecastVM.SpecificInput, Never> = .init()
 
     enum SpecificOutput {
+
         case downloadFailed(error: Error)
+
         case downloadCityForecastSuccess(currentForecast: AnyForecastFetched)
     }
+
     private let outputUpdateMessage: PassthroughSubject<SpecificOutput, Never> = .init()
 
     // Moving data through…
     func transform(inputTrigger: AnyPublisher<SpecificInput, Never>) -> AnyPublisher<SpecificOutput, Never> {
+
         inputTrigger.sink { [weak self] event in
             switch event {
+
             case .viewDidAppear:
                 self?.fetchCityForecastsJSON()
             }
-        }.store(in: &cancellables)
+        }
+
+        .store(in: &cancellables)
+
         return outputUpdateMessage.eraseToAnyPublisher()
     }
 
     fileprivate func fetchCityForecastsJSON() {
         updatedWeather.downloadCityWeather()
             .sink { [weak self] completion in
+
                 if case .failure(let error) = completion {
                     self?.outputUpdateMessage.send(.downloadFailed(error: error))
                 }
-            } receiveValue: { [weak self] liveCityForecast in
-                self?.outputUpdateMessage
-                    .send(.downloadCityForecastSuccess(currentForecast: liveCityForecast))
-            }.store(in: &cancellables)
+            }
+
+            receiveValue: { [weak self] liveCityForecast in
+
+                self?.outputUpdateMessage.send(
+                    .downloadCityForecastSuccess(currentForecast: liveCityForecast)
+                )
+            }
+
+            .store(in: &cancellables)
     }
 
     func bindJSONData() {
@@ -77,12 +93,16 @@ final class ForecastVM: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] event in
                 switch event {
+
                 case .downloadCityForecastSuccess(let forecastProcessed):
                     self?.liveDataTruth = forecastProcessed
+
                 case .downloadFailed(let error):
                     self?.statusFlash = error.localizedDescription
+
                 }
             }
+
             .store(in: &cancellables)
     }
 }
