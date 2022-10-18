@@ -22,7 +22,7 @@ import SwiftUI
 import Combine
 
 final class ForecastVM: ObservableObject {
-    @Published var liveDataTruth = AnyForecastFetched()
+    @Published var liveDataTruth = AnyForecastFetched(weatherList: nil, city: nil)
 
     // Vars used in UI…
     @Published var statusFlash: String = ""
@@ -41,7 +41,7 @@ final class ForecastVM: ObservableObject {
     enum SpecificInput {
         case viewDidAppear
     }
-    let inputUpdateMessage: PassthroughSubject<ForecastVM.SpecificInput, Never> = .init()
+    let inputUpdateMessage = PassthroughSubject<ForecastVM.SpecificInput, Never>()
 
     enum SpecificOutput {
 
@@ -50,7 +50,7 @@ final class ForecastVM: ObservableObject {
         case downloadCityForecastSuccess(currentForecast: AnyForecastFetched)
     }
 
-    private let outputUpdateMessage: PassthroughSubject<SpecificOutput, Never> = .init()
+    private let outputUpdateMessage = PassthroughSubject<SpecificOutput, Never>()
 
     // Moving data through…
     func transform(inputTrigger: AnyPublisher<SpecificInput, Never>) -> AnyPublisher<SpecificOutput, Never> {
@@ -82,6 +82,10 @@ final class ForecastVM: ObservableObject {
                 self?.outputUpdateMessage.send(
                     .downloadCityForecastSuccess(currentForecast: liveCityForecast)
                 )
+
+                if nil == liveCityForecast.weatherList {
+                    print("\r\(liveCityForecast.weatherList.self as Any) <<<< FAIL as NIL weatherList")                }
+
             }
 
             .store(in: &cancellables)

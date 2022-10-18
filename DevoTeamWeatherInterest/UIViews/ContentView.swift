@@ -73,7 +73,6 @@ struct ContentView: View {
             // Use the Combine robust automatic way to load JSON.
             everyForecastVM.bindJSONData()
             everyForecastVM.inputUpdateMessage.send(.viewDidAppear)
-            print(liveDataToo)
         }
         )
         .sheet(isPresented: $isWeatherDetailShown) {

@@ -29,6 +29,8 @@ struct DetailView: View {
     var uniqueCityID: String {
         String() // Identify a particular city by unique id for favouriteSymbolsSet.
     }
+    let debugging = World.DebugHelpers()
+
     static var favouriteSymbolsSet: Set<String> = []
     @State private var isFavourite = false
 
@@ -96,7 +98,8 @@ extension DetailView {
                 Text("Population: " + String((currentData.city?.population
                                                 ??  7))).multilineTextAlignment(.center)
                 Text("""
-Temperature Feels Like\n\(String(currentData.weatherList?[0].weather?[0].mainMeasurements?.feelsLike   ?? 0.00))˚
+Temperature Feels Like\n\(String(currentData.weatherList?.first??.weather?[0]?.mainMeasurements?
+                                    .feelsLike   ?? World.bond007Double))˚
 """)
                 Text("Celsius")
                     .padding(.bottom, 3)

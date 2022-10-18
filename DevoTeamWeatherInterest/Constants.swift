@@ -49,6 +49,9 @@ struct World {
     var favouritesUserSet: Set<String> = []
 
     // MARK: - Errors Info
+    static let bond007Int = 1337
+    static let bond007Double = 1.337
+
     static let sourceURLInvalidErrorMessage: String = "\r—————— invalid URL\r"
     static let jsonNoDataErrorMessage: String = "Network Error:\n  Data\n      missing"
     static let webDataDownloadErrorMessage: String = "\r—————— data download ERROR\r"

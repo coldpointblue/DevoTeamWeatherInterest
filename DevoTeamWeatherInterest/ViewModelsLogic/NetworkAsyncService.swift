@@ -41,6 +41,7 @@ class CityWeather: AnyCityWeather {
         let validAddress = doubleCheckWebAddress(World.forecastRequest)
         let url = URL(string: validAddress)!
         let request = URLRequest(url: url)
+
         return URLSession.shared
             .dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.main)

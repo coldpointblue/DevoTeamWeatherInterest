@@ -24,67 +24,68 @@ import Foundation
 // MARK: - AnyForecastFetched
 struct AnyForecastFetched: Codable {
     var cod: String? = "¿?"
-    var message, cnt: Int?
-    var weatherList: [SeveralReports]?
-    var city: City?
+    var message: Int? = World.bond007Int
+    var cnt: Int? = World.bond007Int
+    let weatherList: [SeveralReports?]?
+    let city: City?
 }
 
 // MARK: - City
 struct City: Codable {
-    var id: Int? = 007
+    var id: Int? = World.bond007Int
     var name: String? = "¿?"
-    var coord: Coord?
+    let coord: Coord?
     var country: String? = "¿?"
 
-    var population: Int? = 007
-    var  timezone: Int? = 007
-    var sunrise: Int? = 007
-    var sunset: Int? = 007
+    var population: Int? = World.bond007Int
+    var  timezone: Int? = World.bond007Int
+    var sunrise: Int? = World.bond007Int
+    var sunset: Int? = World.bond007Int
 }
 
 // MARK: - Coord
 struct Coord: Codable {
-    var lat: Double? = 007.0
-    var lon: Double? = 007.0
+    var lat: Double? = World.bond007Double
+    var lon: Double? = World.bond007Double
 }
 
 // MARK: - List
 struct SeveralReports: Codable {
-    var dataCalculationTime: Int? = 007
-    var forecast: Details?
-    var weather: [Weather]?
-    var clouds: Clouds?
-    var wind: Wind?
-    var visibility: Int? = 007
-    var pop: Double? = 007.0
-    var sys: Sys?
+    var dataCalculationTime: Int? = World.bond007Int
+    let forecast: Details?
+    let weather: [Weather?]?
+    let clouds: Clouds?
+    let wind: Wind?
+    var visibility: Int? = World.bond007Int
+    var pop: Double? = World.bond007Double
+    let sys: Sys?
     var dtTxt: String? = "¿?"
-    var rain: Rain?
+    let rain: Rain?
 
     enum CodingKeys: String, CodingKey {
+        case dataCalculationTime = "dt"
         case forecast, weather, clouds, wind, visibility, pop, sys
         case dtTxt = "dt_txt"
-        case dataCalculationTime = "dt"
         case rain
     }
 }
 
 // MARK: - Clouds
 struct Clouds: Codable {
-    var all: Int? = 007
+    var all: Int? = World.bond007Int
 }
 
 // MARK: - Details
 struct Details: Codable {
-    var temp: Double? = 007.0
-    var feelsLike: Double? = 007.0
-    var tempMin: Double? = 007.0
-    var tempMax: Double? = 007.0
-    var pressure: Double? = 007.0
-    var seaLevel: Double? = 007.0
-    var grndLevel: Double? = 007.0
-    var humidity: Int? = 007
-    var tempKf: Double? = 007.0
+    var temp: Double? = World.bond007Double
+    var feelsLike: Double? = World.bond007Double
+    var tempMin: Double? = World.bond007Double
+    var tempMax: Double? = World.bond007Double
+    var pressure: Double? = World.bond007Double
+    var seaLevel: Double? = World.bond007Double
+    var grndLevel: Double? = World.bond007Double
+    var humidity: Int? = World.bond007Int
+    var tempKf: Double? = World.bond007Double
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -101,7 +102,7 @@ struct Details: Codable {
 
 // MARK: - Rain
 struct Rain: Codable {
-    var the3H: Double? = 007.0
+    var the3H: Double? = World.bond007Double
 
     enum CodingKeys: String, CodingKey {
         case the3H = "3h"
@@ -124,29 +125,24 @@ enum Pod: String, Codable {
 
 // MARK: - Weather
 struct Weather: Codable {
-    var id: Int? = 007
-    var mainMeasurements: Details?
-    var weatherDescription: String = "¿?"
+    var id: Int? = World.bond007Int
+    let mainMeasurements: Details?
     var icon: String? = "¿?"
+    var sky: String? = "¿?"
+    //  "Clear", "clear sky", "Clouds", "broken clouds", "few clouds"
+    // "overcast clouds", "scattered clouds", "Rain", "light ", "moderate rain"
 
     enum CodingKeys: String, CodingKey {
         case id
         case mainMeasurements = "main"
-
-        case weatherDescription = "description"
+        case sky = "description"
         case icon
     }
 }
 
-enum MainEnum: String, Codable {
-    case clear = "Clear"
-    case clouds = "Clouds"
-    case rain = "Rain"
-}
-
 // MARK: - Wind
 struct Wind: Codable {
-    var speed: Double? = 007.0
-    var deg: Int? = 007
-    var gust: Double? = 007.0
+    var speed: Double? = World.bond007Double
+    var deg: Int? = World.bond007Int
+    var gust: Double? = World.bond007Double
 }
